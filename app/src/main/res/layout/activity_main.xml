@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textWellcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textWellcome"
+        android:gravity="center"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:minHeight="550dp"
+        android:minWidth="370dp"
+        app:cardCornerRadius="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/textWellcome"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/cardview_dark_background">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/buttonConversor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/calc_svg"
+                app:layout_constraintTop_toTopOf="@+id/layoutCard"
+                app:layout_constraintStart_toStartOf="@+id/layoutCard" />
+
+            <TextView
+                android:id="@+id/textConversor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="80dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="@string/textConversor"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toTopOf="@+id/layoutCard"
+                app:layout_constraintStart_toStartOf="@+id/layoutCard" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/buttonCalcIMC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="190dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/thermo_svg"
+                app:layout_constraintTop_toTopOf="@+id/layoutCard"
+                app:layout_constraintStart_toStartOf="@+id/layoutCard" />
+
+            <TextView
+                android:id="@+id/textCalcIMC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="175dp"
+                android:layout_marginTop="80dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="@string/textCalcIMC"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toTopOf="@+id/layoutCard"
+                app:layout_constraintStart_toStartOf="@+id/layoutCard" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

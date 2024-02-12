@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">MultiTool</string>
+    <string name="textWellcome">Bienvenido, Seleccione la herramienta deseada:</string>
+    <string name="textConversor">Conversor de temperatura</string>
+    <string name="textCalcIMC">Calculadora IMC</string>
+
+    <string name="calculatorActivity">IMCCalculator</string>
+    <string name="lbl_height">Altura: </string>
+    <string name="lbl_weight">Peso: </string>
+    <string name="hintKg">Kg</string>
+    <string name="hintCm">cm</string>
+    <string name="btn_calculate">Calcular</string>
+    <string name="lbl_result">IMC:</string>
+    <string name="lbl_analysis">Esto indica </string>
+
+    <!-- String for IMC Calculator -->
+    <string name="lowWeight">Peso insuficiente</string>
+    <string name="normalWeight">Normopeso</string>
+    <string name="upWeight1">Sobrepeso grado I</string>
+    <string name="upWeight2">Sobrepeso grado II</string>
+    <string name="overWeight1">Obesidad grado I</string>
+    <string name="overWeight2">Obesidad grado II</string>
+    <string name="overWeight3">Obesidad grado III</string>
+    <string name="overWeight4">Obesidad grado IV</string>
+
+    <!-- String for Temperature Conversor-->
+    <string name="lblInitTemp">Temperatura Inicial:</string>
+    <string name="lblFinalTemp">Temperatura Final: </string>
+    <string name="lblConvertTemp">Escoja la unidad a convertir: </string>
+    <string name="Celcius">Celsius</string>
+    <string name="Fahrenheit">Fahrenheit</string>
+    <string name="Kelvin">Kelvin</string>
+    <string name="btn_convertir">Convertir</string>
+
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Colors for obessedGrade -->
+    <color name="lowWeight">#747474</color>
+    <color name="normalWeight">#0DE504</color>
+    <color name="upWeight1">#F4DA7B</color>
+    <color name="upWeight2">#F4D14D</color>
+    <color name="overWeight1">#F67A7A</color>
+    <color name="overWeight2">#F65555</color>
+    <color name="overWeight3">#FD2323</color>
+    <color name="overWeight4">#FF0000</color>
+
+</resources>
