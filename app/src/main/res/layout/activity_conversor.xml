@@ -38,13 +38,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:width="70dp"
-                android:height="20dp"
-                android:layout_marginTop="60dp"
+                android:height="50dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginStart="120dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <RadioGroup
+                android:id="@+id/radioGroupInit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -111,6 +112,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <RadioGroup
+                android:id="@+id/radioGroupFinal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -179,7 +181,7 @@
                 android:id="@+id/resultTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:width="80dp"
+                android:width="140dp"
                 android:height="50dp"
                 android:gravity="center"
                 android:layout_marginTop="15dp"
