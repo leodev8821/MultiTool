@@ -3,6 +3,7 @@
     <string name="textWellcome">Bienvenido, Seleccione la herramienta deseada:</string>
     <string name="textConversor">Conversor de temperatura</string>
     <string name="textCalcIMC">Calculadora IMC</string>
+    <string name="textAreaCalculator">Calculadora de Áreas</string>
 
     <string name="calculatorActivity">IMCCalculator</string>
     <string name="lbl_height">Altura: </string>
@@ -31,5 +32,17 @@
     <string name="Fahrenheit">Fahrenheit</string>
     <string name="Kelvin">Kelvin</string>
     <string name="btn_convertir">Convertir</string>
+
+    <!-- String for Area Calculator -->
+    <string name="lblGeometricForm">Seleccione la forma geométrica: </string>
+    <string name="circle">Círculo</string>
+    <string name="rectangle">Rectángulo</string>
+    <string name="triangle">Triángulo</string>
+    <string name="lblTriangle">Ingrese el radio: </string>
+    <string name="hintTriangle">(en cm)</string>
+    <string name="lblMeasure">Seleccione qué desea calcular: </string>
+    <string name="area">Área</string>
+    <string name="perimeter">Perímetro</string>
+    <string name="result">El resultado es: </string>
 
 </resources>

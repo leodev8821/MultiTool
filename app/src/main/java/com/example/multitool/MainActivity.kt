@@ -9,6 +9,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var buttonConversor:FloatingActionButton
     lateinit var buttonCalcIMC:FloatingActionButton
+    lateinit var buttonUnitConversor:FloatingActionButton
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +26,11 @@ class MainActivity : AppCompatActivity() {
 
         buttonConversor.setOnClickListener {
             intent = Intent(this, ConversorActivity::class.java)
+            startActivity(intent)
+        }
+
+        buttonUnitConversor.setOnClickListener {
+            intent = Intent(this, AreaPerimeterCalculator::class.java)
             startActivity(intent)
         }
 

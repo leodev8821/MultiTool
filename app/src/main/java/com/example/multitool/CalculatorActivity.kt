@@ -46,7 +46,7 @@ class CalculatorActivity : AppCompatActivity() {
         sliderHeight = findViewById(R.id.sliderHeight)
         btnPlus = findViewById(R.id.btnPlus)
         btnSubs = findViewById(R.id.btnSubst)
-        bottomCard = findViewById(R.id.bottomCard)
+        bottomCard = findViewById(R.id.circleCard)
 
         sliderHeight.addOnChangeListener{_, value, _ ->
             currentHeight = value
