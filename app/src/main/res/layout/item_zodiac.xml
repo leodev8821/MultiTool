@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="25dp"
+    android:padding="10dp"
     android:gravity="center"
     android:orientation="horizontal">
 
@@ -14,22 +14,27 @@
         android:padding="5dp"
         android:src="@drawable/aries_svg"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
     <TextView
         android:id="@+id/zodiacSign"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:gravity="center"
         android:textSize="25sp"
         android:text="@string/zodiacNameAries"/>
 
     <TextView
         android:id="@+id/zodiacDate"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
+        android:layout_margin="5dp"
         android:textSize="15sp"
         android:text="@string/zodiacDateAries"/>
+    </LinearLayout>
 
 </LinearLayout>
