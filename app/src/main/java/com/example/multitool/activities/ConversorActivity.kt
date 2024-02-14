@@ -1,13 +1,12 @@
-package com.example.multitool
+package com.example.multitool.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import com.example.multitool.R
 import com.google.android.material.textfield.TextInputEditText
 import java.text.DecimalFormat
 

@@ -1,4 +1,4 @@
-package com.example.multitool
+package com.example.multitool.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,13 +7,14 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import com.example.multitool.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.slider.Slider
 import com.google.android.material.textfield.TextInputEditText
 import java.text.DecimalFormat
 import kotlin.math.pow
 
-class CalculatorActivity : AppCompatActivity() {
+class IMCCalculatorActivity : AppCompatActivity() {
 
     lateinit var inputHeight: TextInputEditText
     lateinit var inputWeight: TextInputEditText
@@ -30,7 +31,7 @@ class CalculatorActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calculator)
+        setContentView(R.layout.activity_imc_calculator)
 
         initView()
 
@@ -111,7 +112,7 @@ class CalculatorActivity : AppCompatActivity() {
             }
             in 39.9..49.9 -> {
                 analysis = getString(R.string.overWeight3)
-                analysisColor = ContextCompat.getColor(this,R.color.overWeight3)
+                analysisColor = ContextCompat.getColor(this, R.color.overWeight3)
             }
             else -> {
                 analysis = getString(R.string.overWeight4)

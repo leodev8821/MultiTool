@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="5dp"
     android:background="@color/white"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <TextView
         android:id="@+id/textWellcome"
@@ -106,6 +106,29 @@
                 android:text="@string/textAreaCalculator"
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@+id/buttonConversor"
+                app:layout_constraintStart_toStartOf="@+id/layoutCard" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/buttonZodiapp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="190dp"
+                android:layout_marginTop="80dp"
+                android:src="@drawable/sunset_svg"
+                app:layout_constraintTop_toBottomOf="@+id/buttonCalcIMC"
+                app:layout_constraintStart_toStartOf="@+id/layoutCard" />
+
+            <TextView
+                android:id="@+id/textZodiapp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="175dp"
+                android:layout_marginTop="150dp"
+                android:width="90dp"
+                android:gravity="center"
+                android:text="@string/lblTitle"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/buttonCalcIMC"
                 app:layout_constraintStart_toStartOf="@+id/layoutCard" />
 
 

@@ -1,48 +1,78 @@
 <resources>
     <string name="app_name">MultiTool</string>
-    <string name="textWellcome">Bienvenido, Seleccione la herramienta deseada:</string>
-    <string name="textConversor">Conversor de temperatura</string>
-    <string name="textCalcIMC">Calculadora IMC</string>
-    <string name="textAreaCalculator">Calculadora de Áreas</string>
+    <string name="textWellcome">"Wellcome, please select a tool: "</string>
+    <string name="textConversor">Temperature Conversor</string>
+    <string name="textCalcIMC">BMI Calculator</string>
+    <string name="textAreaCalculator">Area Calculator</string>
 
-    <string name="calculatorActivity">IMCCalculator</string>
-    <string name="lbl_height">Altura: </string>
-    <string name="lbl_weight">Peso: </string>
-    <string name="hintKg">Kg</string>
-    <string name="hintCm">cm</string>
-    <string name="btn_calculate">Calcular</string>
-    <string name="lbl_result">IMC:</string>
-    <string name="lbl_analysis">Esto indica </string>
+    <string name="calculatorActivity">BMICalculator</string>
+    <string name="lbl_height">"Height: "</string>
+    <string name="lbl_weight">"Weight: "</string>
+    <string name="hintKg" translatable="false">Kg</string>
+    <string name="hintCm" translatable="false">cm</string>
+    <string name="btn_calculate">Calculate</string>
+    <string name="lbl_result">"BMI: "</string>
+    <string name="lbl_analysis">"This indicates "</string>
 
     <!-- String for IMC Calculator -->
-    <string name="lowWeight">Peso insuficiente</string>
-    <string name="normalWeight">Normopeso</string>
-    <string name="upWeight1">Sobrepeso grado I</string>
-    <string name="upWeight2">Sobrepeso grado II</string>
-    <string name="overWeight1">Obesidad grado I</string>
-    <string name="overWeight2">Obesidad grado II</string>
-    <string name="overWeight3">Obesidad grado III</string>
-    <string name="overWeight4">Obesidad grado IV</string>
+    <string name="lowWeight" translatable="false">Peso insuficiente</string>
+    <string name="normalWeight" translatable="false">Normopeso</string>
+    <string name="upWeight1" translatable="false">Sobrepeso grado I</string>
+    <string name="upWeight2" translatable="false">Sobrepeso grado II</string>
+    <string name="overWeight1" translatable="false">Obesidad grado I</string>
+    <string name="overWeight2" translatable="false">Obesidad grado II</string>
+    <string name="overWeight3" translatable="false">Obesidad grado III</string>
+    <string name="overWeight4" translatable="false">Obesidad grado IV</string>
 
     <!-- String for Temperature Conversor-->
-    <string name="lblInitTemp">Temperatura Inicial:</string>
-    <string name="lblFinalTemp">Temperatura Final: </string>
-    <string name="lblConvertTemp">Escoja la unidad a convertir: </string>
-    <string name="Celcius">Celsius</string>
-    <string name="Fahrenheit">Fahrenheit</string>
-    <string name="Kelvin">Kelvin</string>
-    <string name="btn_convertir">Convertir</string>
+    <string name="lblInitTemp">"Init temperature: "</string>
+    <string name="lblFinalTemp">"Final temperature: "</string>
+    <string name="lblConvertTemp">"Choose unit to convert to: "</string>
+    <string name="Celcius" translatable="false">Celsius</string>
+    <string name="Fahrenheit" translatable="false">Fahrenheit</string>
+    <string name="Kelvin" translatable="false">Kelvin</string>
+    <string name="btn_convertir">Convert</string>
 
     <!-- String for Area Calculator -->
-    <string name="lblGeometricForm">Seleccione la forma geométrica: </string>
-    <string name="circle">Círculo</string>
-    <string name="rectangle">Rectángulo</string>
-    <string name="triangle">Triángulo</string>
-    <string name="lblTriangle">Ingrese el radio: </string>
-    <string name="hintTriangle">(en cm)</string>
-    <string name="lblMeasure">Seleccione qué desea calcular: </string>
-    <string name="area">Área</string>
-    <string name="perimeter">Perímetro</string>
-    <string name="result">El resultado es: </string>
+    <string name="lblGeometricForm">"Choose the geometric form: "</string>
+    <string name="circle">Circle</string>
+    <string name="rectangle">Rectangle</string>
+    <string name="triangle">Triangle</string>
+    <string name="lblTriangle">"Insert radio: "</string>
+    <string name="lblRectangle">"Insert base: "</string>
+    <string name="hintTriangle">(in cm)</string>
+    <string name="lblMeasure">"Select what do you want calculate: "</string>
+    <string name="area">Area</string>
+    <string name="perimeter">Perimeter</string>
+    <string name="result">"The result is: "</string>
+
+    <!-- Strings for Zodiapp -->
+    <string name="lblTitle">ZodiApp</string>
+    <string name="zodiacNameAries">Aries</string>
+    <string name="zodiacDateAries">From 21 March to 20 April</string>
+    <string name="zodiacNameTaurus">Taurus</string>
+    <string name="zodiacDateTaurus">From 21 April to 21 May</string>
+    <string name="zodiacNameGemini">Gemini</string>
+    <string name="zodiacDateGemini">From 22 May to 21 June</string>
+    <string name="zodiacNameCancer">Cancer</string>
+    <string name="zodiacDateCancer">From 22 June to 23 July</string>
+    <string name="zodiacNameLeo">Leo</string>
+    <string name="zodiacDateLeo">From 24 July to 23 August</string>
+    <string name="zodiacNameVirgo">Virgo</string>
+    <string name="zodiacDateVirgo">From 24 August to 23 September</string>
+    <string name="zodiacNameLibra">Libra</string>
+    <string name="zodiacDateLibra">From 23 September to 23 October</string>
+    <string name="zodiacNameScorpio">Scorpio</string>
+    <string name="zodiacDateScorpio">From 23 October to 22 November</string>
+    <string name="zodiacNameSagittarius">Sagittarius</string>
+    <string name="zodiacDateSagittarius">From 23 November to 21 December</string>
+    <string name="zodiacNameCapricorn">Capricorn</string>
+    <string name="zodiacDateCapricorn">From 22 December to 20 January</string>
+    <string name="zodiacNameAquarius">Aquarius</string>
+    <string name="zodiacDateAquarius">From 21 January to 19 February</string>
+    <string name="zodiacNamePisces">Pisces</string>
+    <string name="zodiacDatePisces">From 20 February to 20 March</string>
+
+
 
 </resources>

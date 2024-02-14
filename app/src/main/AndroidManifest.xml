@@ -13,16 +13,19 @@
         android:theme="@style/Theme.MultiTool"
         tools:targetApi="31">
         <activity
-            android:name=".AreaPerimeterCalculator"
+            android:name=".zodiapp.Zodiapp"
             android:exported="false" />
         <activity
-            android:name=".ConversorActivity"
+            android:name=".activities.AreaPerimeterCalculator"
             android:exported="false" />
         <activity
-            android:name=".CalculatorActivity"
+            android:name=".activities.ConversorActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.IMCCalculatorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

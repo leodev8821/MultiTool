@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".ConversorActivity">
+    tools:context=".activities.ConversorActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardTop"
