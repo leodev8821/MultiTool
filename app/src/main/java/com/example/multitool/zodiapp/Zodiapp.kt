@@ -1,5 +1,6 @@
 package com.example.multitool.zodiapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,10 +40,21 @@ class Zodiapp : AppCompatActivity() {
 
         recicleView = findViewById(R.id.recicleView)
 
-        adapter = ZodiacAdapter(zodiacList)
+        adapter = ZodiacAdapter(zodiacList){
+            onItemClickListener(it)
+        }
 
         recicleView.layoutManager = LinearLayoutManager(this)
 
         recicleView.adapter = adapter
+    }
+
+    private fun onItemClickListener(position:Int) {
+        val zodiac:Zodiac = zodiacList[position]
+
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("HOROSCOPE_ID", zodiac.id)
+        startActivity(intent)
+        //Toast.makeText(this, getString(horoscope.name), Toast.LENGTH_LONG).show()
     }
 }

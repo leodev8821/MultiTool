@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.multitool.R
 import com.example.multitool.zodiapp.data.Zodiac
 
-class ZodiacAdapter(val items:List<Zodiac> = listOf()) : RecyclerView.Adapter<ZodiacViewHolder>() {
+class ZodiacAdapter(val items:List<Zodiac> = listOf(), val onClickListener: (position:Int) -> Unit) : RecyclerView.Adapter<ZodiacViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ZodiacViewHolder {
         val view:View = LayoutInflater.from(parent.context).inflate(R.layout.item_zodiac, parent, false)
         return ZodiacViewHolder(view)
@@ -20,6 +20,7 @@ class ZodiacAdapter(val items:List<Zodiac> = listOf()) : RecyclerView.Adapter<Zo
 
     override fun onBindViewHolder(holder: ZodiacViewHolder, position: Int) {
         holder.render(items[position])
+        holder.itemView.setOnClickListener { onClickListener(position) }
     }
 
 }
