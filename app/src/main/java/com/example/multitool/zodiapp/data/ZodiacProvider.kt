@@ -29,7 +29,8 @@ class ZodiacProvider {
     }
 
     fun getZodiac(id: String): Zodiac {
-        return getZodiacs().filter { it.id == id }.firstOrNull()!!
+        //return getZodiacs().filter { it.id == id }.firstOrNull()!!
+        return getZodiacs().firstOrNull { it.id == id }!!
     }
 
     suspend fun getZodiacLuck(zodiacId: String): String? {

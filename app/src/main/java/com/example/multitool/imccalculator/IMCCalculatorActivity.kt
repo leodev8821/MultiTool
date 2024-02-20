@@ -1,7 +1,8 @@
-package com.example.multitool.activities
+package com.example.multitool.imccalculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -39,6 +40,9 @@ class IMCCalculatorActivity : AppCompatActivity() {
 
     private fun initView() {
 
+        // Show Back Button
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         inputHeight = findViewById(R.id.inputHeight)
         inputWeight = findViewById(R.id.inputWeight)
         lblResult = findViewById(R.id.lblResult)
@@ -74,6 +78,18 @@ class IMCCalculatorActivity : AppCompatActivity() {
 
             }
         }
+    }
+
+    // To listen the item selected in a menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+
     }
 
     private fun calculateIMC(height:Float, weight:Float) {

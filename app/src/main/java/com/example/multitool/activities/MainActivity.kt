@@ -3,7 +3,13 @@ package com.example.multitool.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import com.example.multitool.R
+import com.example.multitool.apcalculator.AreaPerimeterCalculator
+import com.example.multitool.imccalculator.IMCCalculatorActivity
+import com.example.multitool.tempconversor.TempConversorActivity
 import com.example.multitool.zodiapp.Zodiapp
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -30,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonConversor.setOnClickListener {
-            intent = Intent(this, ConversorActivity::class.java)
+            intent = Intent(this, TempConversorActivity::class.java)
             startActivity(intent)
         }
 
@@ -44,5 +50,31 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    // To listen the item selected in a menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+            R.id.opt1 ->{
+                Toast.makeText(this, "He pulsado Refresh", Toast.LENGTH_LONG).show()
+            }
+            R.id.opt2 ->{
+                Toast.makeText(this, "He pulsado Settings", Toast.LENGTH_LONG).show()
+            }
+            R.id.opt3 ->{
+                Toast.makeText(this, getString(R.string.toastAbout), Toast.LENGTH_LONG).show()
+            }
+
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
     }
 }

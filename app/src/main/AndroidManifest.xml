@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -19,13 +22,13 @@
             android:name=".zodiapp.Zodiapp"
             android:exported="false" />
         <activity
-            android:name=".activities.AreaPerimeterCalculator"
+            android:name=".apcalculator.AreaPerimeterCalculator"
             android:exported="false" />
         <activity
-            android:name=".activities.ConversorActivity"
+            android:name=".tempconversor.TempConversorActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.IMCCalculatorActivity"
+            android:name=".imccalculator.IMCCalculatorActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"

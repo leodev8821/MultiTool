@@ -51,4 +51,7 @@
     <string name="zodiacDateCapricorn">Desde 22 Diciembre hasta 20 Enero</string>
     <string name="zodiacDateAquarius">Desde 21 Enero hasta 19 Febrero</string>
     <string name="zodiacDatePisces">Desde 20 Febrero hasta 20 Marzo</string>
+    <string name="zodiacLuckToday">"Horóscopo del día: "</string>
+    <string name="zodiacImageDescription">Aries</string>
+    <string name="toastAbout">Creado por LeoDev</string>
 </resources>

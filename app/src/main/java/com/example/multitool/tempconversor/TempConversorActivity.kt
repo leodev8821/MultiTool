@@ -1,7 +1,8 @@
-package com.example.multitool.activities
+package com.example.multitool.tempconversor
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -10,7 +11,7 @@ import com.example.multitool.R
 import com.google.android.material.textfield.TextInputEditText
 import java.text.DecimalFormat
 
-class ConversorActivity : AppCompatActivity() {
+class TempConversorActivity : AppCompatActivity() {
 
     lateinit var inputInitTemp : TextInputEditText
     lateinit var resultTemp : TextView
@@ -39,6 +40,9 @@ class ConversorActivity : AppCompatActivity() {
 
     private fun initView(){
 
+        // Show Back Button
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         inputInitTemp = findViewById(R.id.inputInitTemp)
         resultTemp = findViewById(R.id.resultTemp)
 
@@ -66,6 +70,18 @@ class ConversorActivity : AppCompatActivity() {
                 conversor(initTemp, initUnit, finalUnit)
             }
         }
+    }
+
+    // To listen the item selected in a menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+
     }
 
     private fun conversor(initTemp: Float, initUnit: String, finalUnit: String){

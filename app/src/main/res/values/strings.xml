@@ -72,6 +72,10 @@
     <string name="zodiacDateAquarius">From 21 January to 19 February</string>
     <string name="zodiacNamePisces">Pisces</string>
     <string name="zodiacDatePisces">From 20 February to 20 March</string>
+    <string name="zodiacLuckToday">Today\'s horoscope: </string>
+    <string name="zodiacImageDescription">Aries</string>
+
+    <string name="toastAbout">Created by LeoDev </string>
 
 
 </resources>

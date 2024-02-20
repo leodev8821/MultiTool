@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     android:background="@color/black"
-    tools:context=".activities.AreaPerimeterCalculator">
+    tools:context=".apcalculator.AreaPerimeterCalculator">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/topCard"
