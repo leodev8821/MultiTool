@@ -38,9 +38,11 @@
     <string name="circle">Circle</string>
     <string name="rectangle">Rectangle</string>
     <string name="triangle">Triangle</string>
-    <string name="lblTriangle">"Insert radio: "</string>
-    <string name="lblRectangle">"Insert base: "</string>
+    <string name="lblCircleRadio">"Insert radio: "</string>
+    <string name="lblRectangleBase">"Insert base: "</string>
+    <string name="lblRectangleHeight">"Insert height: "</string>
     <string name="hintTriangle">(in cm)</string>
+    <string name="hintRectangle">(in cm)</string>
     <string name="lblMeasure">"Select what do you want calculate: "</string>
     <string name="area">Area</string>
     <string name="perimeter">Perimeter</string>
