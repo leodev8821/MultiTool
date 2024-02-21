@@ -30,6 +30,7 @@
                 android:text="@string/lblGeometricForm" />
 
             <RadioGroup
+                android:id="@+id/radioGroupGeometric"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -82,6 +83,7 @@
                 style="@style/Titles"/>
 
             <RadioGroup
+                android:id="@+id/radioGroupAP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -131,6 +133,7 @@
                 style="@style/Titles"/>
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/hintTriangle"
@@ -148,34 +151,34 @@
         android:id="@+id/rectangleCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/CardViewStyle">
+        style="@style/CardViewStyle"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp">
+                android:orientation="horizontal"
+                android:layout_gravity="center">
 
                 <TextView
                     android:id="@+id/RectangleBase"
-                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lblRectangleBase"
-                    style="@style/Titles"/>
+                    android:text="@string/lblBase"
+                    style="@style/SubTitles"/>
 
                 <TextView
                     android:id="@+id/RectangleHeight"
-                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lblRectangleHeight"
-                    style="@style/Titles"/>
+                    android:text="@string/lblHeight"
+                    style="@style/SubTitles"/>
             </LinearLayout>
 
             <LinearLayout
@@ -185,7 +188,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/base"
+                    android:id="@+id/rectangleBase"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -195,7 +198,7 @@
                     style="@style/Options" />
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/height"
+                    android:id="@+id/rectangleHeight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -204,7 +207,149 @@
                     android:layout_marginTop="5dp"
                     style="@style/Options" />
             </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/triangleAreaCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/CardViewStyle"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/TriangleBase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblBase"
+                    style="@style/SubTitles"/>
+
+                <TextView
+                    android:id="@+id/TriangleHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblHeight"
+                    style="@style/SubTitles"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/triangleBase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="@string/hintTriangle"
+                    android:textColorHint="@color/white"
+                    android:layout_marginTop="5dp"
+                    style="@style/Options" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/triangleHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="@string/hintTriangle"
+                    android:textColorHint="@color/white"
+                    android:layout_marginTop="5dp"
+                    style="@style/Options" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/trianglePerimeterCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/CardViewStyle"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/TriangleSide1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblTriangleSide1"
+                    style="@style/SubTitles"/>
+
+                <TextView
+                    android:id="@+id/TriangleSide2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblTriangleSide2"
+                    style="@style/SubTitles"/>
+
+                <TextView
+                    android:id="@+id/TriangleSide3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblTriangleSide3"
+                    style="@style/SubTitles"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/triangleSide1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="@string/hintTriangle"
+                    android:textColorHint="@color/white"
+                    android:layout_marginTop="5dp"
+                    style="@style/Options" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/triangleSide2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="@string/hintTriangle"
+                    android:textColorHint="@color/white"
+                    android:layout_marginTop="5dp"
+                    style="@style/Options" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/triangleSide3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="@string/hintTriangle"
+                    android:textColorHint="@color/white"
+                    android:layout_marginTop="5dp"
+                    style="@style/Options" />
+            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -212,12 +357,15 @@
         android:id="@+id/resultCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         style="@style/CardViewStyle">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="25dp">
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/lblResult"
@@ -226,19 +374,24 @@
                 android:text="@string/result"
                 android:width="160dp"
                 android:height="40dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 style="@style/Titles"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:width="160dp"
+                android:height="40dp"
+                style="@style/Titles"/>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 
     <Button
         android:id="@+id/bntCalculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:text="@string/btn_calculate"
         style="@style/Titles"/>

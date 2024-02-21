@@ -37,6 +37,9 @@
     <string name="rectangle">Rectángulo</string>
     <string name="triangle">Triángulo</string>
     <string name="lblCircleRadio">"Ingrese el radio: "</string>
+    <string name="lblTriangleSide1">"Ingrese Lado 1: "</string>
+    <string name="lblTriangleSide2">"Ingrese Lado 2: "</string>
+    <string name="lblTriangleSide3">"Ingrese Lado 3: "</string>
     <string name="lblRectangle">"Ingrese la base: "</string>
     <string name="hintTriangle">(en cm)</string>
     <string name="zodiacDateAries">Desde 21 Marzo hasta 20 Abril</string>
@@ -55,6 +58,6 @@
     <string name="zodiacImageDescription">Aries</string>
     <string name="toastAbout">Creado por LeoDev</string>
     <string name="hintRectangle">(en cm)</string>
-    <string name="lblRectangleBase">"Ingrese la base: "</string>
-    <string name="lblRectangleHeight">"Ingrese la altura: "</string>
+    <string name="lblBase">"Ingrese la base: "</string>
+    <string name="lblHeight">"Ingrese la altura: "</string>
 </resources>

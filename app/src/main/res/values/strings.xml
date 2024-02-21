@@ -36,17 +36,21 @@
     <!-- String for Area Calculator -->
     <string name="lblGeometricForm">"Choose the geometric form: "</string>
     <string name="circle">Circle</string>
-    <string name="rectangle">Rectangle</string>
-    <string name="triangle">Triangle</string>
     <string name="lblCircleRadio">"Insert radio: "</string>
-    <string name="lblRectangleBase">"Insert base: "</string>
-    <string name="lblRectangleHeight">"Insert height: "</string>
-    <string name="hintTriangle">(in cm)</string>
+    <string name="rectangle">Rectangle</string>
     <string name="hintRectangle">(in cm)</string>
+    <string name="lblBase">"Insert base: "</string>
+    <string name="lblHeight">"Insert height: "</string>
+    <string name="triangle">Triangle</string>
+    <string name="hintTriangle">(in cm)</string>
+    <string name="lblTriangleSide1">"Insert Side 1: "</string>
+    <string name="lblTriangleSide2">"Insert Side 2: "</string>
+    <string name="lblTriangleSide3">"Insert Side 3: "</string>
     <string name="lblMeasure">"Select what do you want calculate: "</string>
     <string name="area">Area</string>
     <string name="perimeter">Perimeter</string>
     <string name="result">"The result is: "</string>
+
 
     <!-- Strings for Zodiapp -->
     <string name="lblTitle">ZodiApp</string>
@@ -78,6 +82,7 @@
     <string name="zodiacImageDescription">Aries</string>
 
     <string name="toastAbout">Created by LeoDev </string>
+    <string name="lblRectangle">"Insert Base: "</string>
 
 
 </resources>
