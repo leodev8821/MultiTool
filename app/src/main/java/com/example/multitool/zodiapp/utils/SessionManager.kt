@@ -1,4 +1,4 @@
-package com.example.multitool.utils
+package com.example.multitool.zodiapp.utils
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -15,6 +15,7 @@ class SessionManager (context: Context) {
         sharedPref = context.getSharedPreferences("my_session", Context.MODE_PRIVATE)
     }
 
+    // Propiedades que se desean guardar en la Sesion
     fun setFavoriteZodiac (id : String){
         val editor = sharedPref?.edit()
         if(editor != null){

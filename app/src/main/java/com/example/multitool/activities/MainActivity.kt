@@ -10,7 +10,7 @@ import com.example.multitool.R
 import com.example.multitool.apcalculator.AreaPerimeterCalculator
 import com.example.multitool.imccalculator.IMCCalculatorActivity
 import com.example.multitool.tempconversor.TempConversorActivity
-import com.example.multitool.zodiapp.Zodiapp
+import com.example.multitool.zodiapp.ZodiappActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonZodiapp.setOnClickListener {
-            intent = Intent(this, Zodiapp::class.java)
+            intent = Intent(this, ZodiappActivity::class.java)
             startActivity(intent)
         }
 

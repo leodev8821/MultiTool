@@ -10,7 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.multitool.R
 import com.example.multitool.zodiapp.data.Zodiac
 
-class ZodiacAdapter(val items:List<Zodiac> = listOf(), val onClickListener: (position:Int) -> Unit) : RecyclerView.Adapter<ZodiacViewHolder>() {
+class ZodiacAdapter(var items:List<Zodiac> = listOf(), val onClickListener: (position:Int) -> Unit) : RecyclerView.Adapter<ZodiacViewHolder>() {
+
+    fun updateData(list :List<Zodiac>) {
+        this.items = list
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ZodiacViewHolder {
         val view:View = LayoutInflater.from(parent.context).inflate(R.layout.item_zodiac, parent, false)
         return ZodiacViewHolder(view)

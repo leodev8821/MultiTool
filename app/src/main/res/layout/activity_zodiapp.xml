@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".zodiapp.Zodiapp">
+    tools:context=".zodiapp.ZodiappActivity">
+
 
     <TextView
         android:id="@+id/lblTitle"

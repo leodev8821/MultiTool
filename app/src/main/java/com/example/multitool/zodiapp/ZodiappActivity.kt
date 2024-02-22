@@ -3,7 +3,9 @@ package com.example.multitool.zodiapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.multitool.R
@@ -11,7 +13,7 @@ import com.example.multitool.zodiapp.adapters.ZodiacAdapter
 import com.example.multitool.zodiapp.data.Zodiac
 import com.example.multitool.zodiapp.data.ZodiacProvider
 
-class Zodiapp : AppCompatActivity() {
+class ZodiappActivity : AppCompatActivity() {
 
     private var zodiacList:List<Zodiac> = ZodiacProvider().getZodiacs()
     private lateinit var recicleView:RecyclerView
@@ -48,6 +50,14 @@ class Zodiapp : AppCompatActivity() {
         startActivity(intent)
         //Toast.makeText(this, getString(horoscope.name), Toast.LENGTH_LONG).show()
     }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.zodiapp_main_menu, menu)
+
+        initSearchView(menu?.findItem(R.id.menu_search))
+
+        return true
+    }
 
     // To listen the item selected in a menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -58,6 +68,28 @@ class Zodiapp : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
 
+    private fun initSearchView(searchItem: MenuItem?) {
+        if (searchItem != null) {
+            var searchView = searchItem.actionView as SearchView
+
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextChange(query: String?): Boolean {
+                    if (query.isNullOrEmpty()) {
+                        zodiacList = ZodiacProvider().getZodiacs()
+                    } else {
+                        zodiacList = ZodiacProvider().getZodiacs()
+                            .filter { getString(it.name).contains(query, true) }
+                    }
+                    adapter.updateData(zodiacList)
+                    return true
+                }
+            })
+        }
     }
 }

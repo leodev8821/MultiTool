@@ -41,6 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/circle"
+                    android:buttonTint="@color/white"
                     style="@style/Options"/>
 
                 <RadioButton
@@ -48,6 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/rectangle"
+                    android:buttonTint="@color/white"
                     style="@style/Options"/>
 
                 <RadioButton
@@ -55,6 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/triangle"
+                    android:buttonTint="@color/white"
                     style="@style/Options" />
             </RadioGroup>
         </LinearLayout>

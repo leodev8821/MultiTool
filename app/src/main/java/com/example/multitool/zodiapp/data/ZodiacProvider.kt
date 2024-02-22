@@ -28,11 +28,28 @@ class ZodiacProvider {
         )
     }
 
+    // To get a Zodiac by its id
     fun getZodiac(id: String): Zodiac {
         //return getZodiacs().filter { it.id == id }.firstOrNull()!!
         return getZodiacs().firstOrNull { it.id == id }!!
     }
 
+    // To get a zodiac by its index
+    fun getZodiac(index:Int): Zodiac{
+        return getZodiacs()[index]
+    }
+
+    // To get the zodiac index
+    fun getZodiacIndex(zodiac: Zodiac) : Int {
+        return getZodiacs().indexOf(zodiac)
+    }
+
+    /**
+     * Retrieve the horoscope daily luck from the API Rest
+     *
+     * @param zodiacId: The identifier of the zodiac to retrieve in english
+     * @return Returns the text as String containing the daily luck
+     */
     suspend fun getZodiacLuck(zodiacId: String): String? {
         val url = URL("https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=$zodiacId&day=TODAY") // URL de la API o endpoint
         var connection: HttpsURLConnection? = null
@@ -65,6 +82,7 @@ class ZodiacProvider {
         return result
     }
 
+    // To make the string for the response
     private fun readStream (inputStream: InputStream) : StringBuilder {
         val reader = BufferedReader(InputStreamReader(inputStream))
         val response = StringBuilder()

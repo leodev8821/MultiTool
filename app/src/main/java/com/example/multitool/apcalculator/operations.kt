@@ -11,40 +11,35 @@ interface GeometricForm {
 }
 
 class Circle (private val radius:Double) : GeometricForm{
-    override fun areaCalculator():String{
-        val area = String.format("%.2f", PI * radius.pow(2))
-        return area
+    override fun areaCalculator(): String {
+        return String.format("%.2f", PI * radius.pow(2)) + " cm2"
     }
 
+
     override fun perimeterCalculator():String {
-        val perimeter = String.format("%.2f", 2* PI * radius)
-        return perimeter
+        return String.format("%.2f", 2* PI * radius) + " cm"
     }
 
 }
 
-class Rectangle (private val base:Double, private val altura:Double) : GeometricForm{
-    override fun areaCalculator():String {
-        val area = String.format("%.2f", base * altura)
-        return area
+class Rectangle (private val base:Double, private val height:Double) : GeometricForm{
+    override fun areaCalculator(): String {
+        return String.format("%.2f", base * height) + " cm2"
     }
 
-    override fun perimeterCalculator():String {
-        val perimeter = String.format("%.2f", (2*base)+(2*altura))
-        return perimeter
+    override fun perimeterCalculator(): String {
+        return String.format("%.2f", (2 * base) + (2 * height)) + " cm"
     }
 
 }
 
-class Triangle (private val base:Double, private val altura:Double, private val lado1:Double, private val lado2:Double, private val lado3:Double) : GeometricForm{
-    override fun areaCalculator():String {
-        val area = String.format("%.2f", (base * altura) / 2)
-        return area
+class Triangle (private val base:Double, private val height:Double, private val side1:Double, private val side2:Double, private val side3:Double) : GeometricForm{
+    override fun areaCalculator(): String {
+        return String.format("%.2f", (base * height) / 2) + " cm2"
     }
 
-    override fun perimeterCalculator():String {
-        val perimeter = String.format("%.2f", (lado1+lado2+lado3))
-        return perimeter
+    override fun perimeterCalculator(): String {
+        return String.format("%.2f", (side1 + side2 + side3)) + " cm"
     }
 
 }

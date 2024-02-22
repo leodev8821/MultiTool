@@ -19,7 +19,7 @@
             android:name=".zodiapp.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".zodiapp.Zodiapp"
+            android:name=".zodiapp.ZodiappActivity"
             android:exported="false" />
         <activity
             android:name=".apcalculator.AreaPerimeterCalculator"

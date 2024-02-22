@@ -64,19 +64,31 @@
                 android:padding="10dp"
                 android:textSize="24sp"
                 android:text="@string/zodiacLuckToday"/>
-
-            <ScrollView
+            
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/zodiacLuckTextView"
+                android:layout_height="match_parent">
+
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:justificationMode="inter_word"
-                    android:textSize="24sp"
-                    android:padding="10dp"
-                    android:layout_margin="10dp"/>
-            </ScrollView>
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/zodiacLuckTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:justificationMode="inter_word"
+                        android:textSize="24sp"
+                        android:padding="10dp"
+                        android:layout_margin="10dp"/>
+                </ScrollView>
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    />
+            </FrameLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

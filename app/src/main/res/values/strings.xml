@@ -55,34 +55,38 @@
     <!-- Strings for Zodiapp -->
     <string name="lblTitle">ZodiApp</string>
     <string name="zodiacNameAries">Aries</string>
-    <string name="zodiacDateAries">From 21 March to 20 April</string>
+    <string name="zodiacDateAries">21 March - 20 April</string>
     <string name="zodiacNameTaurus">Taurus</string>
-    <string name="zodiacDateTaurus">From 21 April to 21 May</string>
+    <string name="zodiacDateTaurus">21 April - 21 May</string>
     <string name="zodiacNameGemini">Gemini</string>
-    <string name="zodiacDateGemini">From 22 May to 21 June</string>
+    <string name="zodiacDateGemini">22 May - 21 June</string>
     <string name="zodiacNameCancer">Cancer</string>
-    <string name="zodiacDateCancer">From 22 June to 23 July</string>
+    <string name="zodiacDateCancer">22 June - 23 July</string>
     <string name="zodiacNameLeo">Leo</string>
-    <string name="zodiacDateLeo">From 24 July to 23 August</string>
+    <string name="zodiacDateLeo">From 24 July - 23 August</string>
     <string name="zodiacNameVirgo">Virgo</string>
-    <string name="zodiacDateVirgo">From 24 August to 23 September</string>
+    <string name="zodiacDateVirgo">24 August - 23 September</string>
     <string name="zodiacNameLibra">Libra</string>
-    <string name="zodiacDateLibra">From 23 September to 23 October</string>
+    <string name="zodiacDateLibra">23 September - 23 October</string>
     <string name="zodiacNameScorpio">Scorpio</string>
-    <string name="zodiacDateScorpio">From 23 October to 22 November</string>
+    <string name="zodiacDateScorpio">23 October - November</string>
     <string name="zodiacNameSagittarius">Sagittarius</string>
-    <string name="zodiacDateSagittarius">From 23 November to 21 December</string>
+    <string name="zodiacDateSagittarius">23 November to 21 December</string>
     <string name="zodiacNameCapricorn">Capricorn</string>
-    <string name="zodiacDateCapricorn">From 22 December to 20 January</string>
+    <string name="zodiacDateCapricorn">22 December - 20 January</string>
     <string name="zodiacNameAquarius">Aquarius</string>
-    <string name="zodiacDateAquarius">From 21 January to 19 February</string>
+    <string name="zodiacDateAquarius">21 January - 19 February</string>
     <string name="zodiacNamePisces">Pisces</string>
-    <string name="zodiacDatePisces">From 20 February to 20 March</string>
+    <string name="zodiacDatePisces">20 February - 20 March</string>
     <string name="zodiacLuckToday">Today\'s horoscope: </string>
     <string name="zodiacImageDescription">Aries</string>
 
     <string name="toastAbout">Created by LeoDev </string>
     <string name="lblRectangle">"Insert Base: "</string>
+
+    <string name="menu_prev" translatable="false">""</string>
+    <string name="menu_next" translatable="false">""</string>
+    <string name="menu_search">Search</string>
 
 
 </resources>
