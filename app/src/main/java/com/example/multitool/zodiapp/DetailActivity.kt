@@ -5,18 +5,28 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.multitool.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.example.multitool.zodiapp.data.Zodiac
 import com.example.multitool.zodiapp.data.ZodiacProvider
+import com.example.multitool.zodiapp.utils.SessionManager
 
 class DetailActivity : AppCompatActivity() {
+
+    companion object {
+        const val EXTRA_ID = "HOROSCOPE_ID"
+    }
+
+    private lateinit var session: SessionManager
+    private var isFavorite = false
+    private lateinit var favoriteImageButton: ImageButton
 
     private var currentZodiacIndex:Int = -1
     private var zodiacId:String? = null
@@ -32,7 +42,9 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailzodiac)
 
-        zodiacId = intent.getStringExtra("HOROSCOPE_ID")
+        session = SessionManager(this)
+
+        zodiacId = intent.getStringExtra(EXTRA_ID)
         zodiac = ZodiacProvider().getZodiac(zodiacId!!)
         currentZodiacIndex = ZodiacProvider().getZodiacIndex(zodiac)
 
@@ -57,8 +69,19 @@ class DetailActivity : AppCompatActivity() {
 
         zodiacTextView.text = getString(zodiac.name)
         zodiacImageView.setImageResource(zodiac.image)
+        favoriteImageButton = findViewById(R.id.favoriteImageButton)
 
         progress = findViewById(R.id.progress)
+
+        favoriteImageButton.setOnClickListener {
+            isFavorite = !isFavorite
+            if (isFavorite) {
+                session.setFavoriteZodiac(zodiac.id)
+            } else {
+                session.setFavoriteZodiac("")
+            }
+            setFavoriteDrawable()
+        }
     }
 
     private fun loadData() {
@@ -72,6 +95,15 @@ class DetailActivity : AppCompatActivity() {
         zodiacImageView.setImageResource(zodiac.image)
 
         getZodiacLuck()
+    }
+
+    private fun setFavoriteDrawable () {
+        val favDrawableId = if (isFavorite) {
+            R.drawable.black_heart_svg
+        } else {
+            R.drawable.favorite_svg
+        }
+        favoriteImageButton.setImageResource(favDrawableId)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -123,5 +155,16 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    private fun shoErrorDialog() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+
+        builder
+            .setTitle("Error")
+            .setMessage("Hubo un error en al conectar con el servicio")
+            .setPositiveButton("Vale") {dialog, _ -> dialog?.cancel()}
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
 
 }

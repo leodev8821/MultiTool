@@ -80,6 +80,7 @@
     <string name="zodiacDatePisces">20 February - 20 March</string>
     <string name="zodiacLuckToday">Today\'s horoscope: </string>
     <string name="zodiacImageDescription">Aries</string>
+    <string name="zodiacFavoriteDescription">Favorite</string>
 
     <string name="toastAbout">Created by LeoDev </string>
     <string name="lblRectangle">"Insert Base: "</string>

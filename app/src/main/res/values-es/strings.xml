@@ -61,4 +61,5 @@
     <string name="lblBase">"Ingrese la base: "</string>
     <string name="lblHeight">"Ingrese la altura: "</string>
     <string name="menu_search">Buscar</string>
+    <string name="zodiacFavoriteDescription">Favorite</string>
 </resources>
