@@ -8,6 +8,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="transparent">#00000000</color>
+    <color name="disabled">#626262</color>
 
     <!-- Colors for obessedGrade -->
     <color name="lowWeight">#747474</color>

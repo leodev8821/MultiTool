@@ -3,13 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/share"
+        android:icon="@drawable/share_svg"
+        android:iconTint="@color/white"
+        app:showAsAction="always"
+        android:title="share" />
+    <item
         android:id="@+id/menu_prev"
         android:title="@string/menu_prev"
         android:icon="@drawable/arrow_ios_back_svg"
+        android:iconTint="@color/white"
         app:showAsAction="always"/>
     <item
         android:id="@+id/menu_next"
         android:title="@string/menu_next"
+        android:iconTint="@color/white"
         android:icon="@drawable/arrow_ios_forward_svg"
         app:showAsAction="always"/>
 

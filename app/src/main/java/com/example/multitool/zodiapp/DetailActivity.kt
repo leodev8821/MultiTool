@@ -1,6 +1,6 @@
 package com.example.multitool.zodiapp
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -10,13 +10,15 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.multitool.R
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import com.example.multitool.zodiapp.data.Zodiac
 import com.example.multitool.zodiapp.data.ZodiacProvider
 import com.example.multitool.zodiapp.utils.SessionManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
 
 class DetailActivity : AppCompatActivity() {
 
@@ -27,6 +29,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var session: SessionManager
     private var isFavorite = false
     private lateinit var favoriteImageButton: ImageButton
+    private lateinit var share:ImageButton
 
     private var currentZodiacIndex:Int = -1
     private var zodiacId:String? = null
@@ -123,6 +126,11 @@ class DetailActivity : AppCompatActivity() {
                 finish()
                 return true
             }
+            // Menu Button Share
+            R.id.share -> {
+                shareZodiac()
+            }
+            // Menu Button Previous
             R.id.menu_prev -> {
                 if (currentZodiacIndex == 0) {
                     currentZodiacIndex = ZodiacProvider().getZodiacs().size
@@ -131,6 +139,7 @@ class DetailActivity : AppCompatActivity() {
                 loadData()
                 return true
             }
+            // Menu Button Forward
             R.id.menu_next -> {
                 currentZodiacIndex ++
                 if (currentZodiacIndex == ZodiacProvider().getZodiacs().size) {
@@ -143,6 +152,18 @@ class DetailActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    // Para lanzar el menu de Compartir de Android
+    private fun shareZodiac() {
+        val intent = Intent()
+        intent.setAction(Intent.ACTION_SEND)
+        intent.putExtra(Intent.EXTRA_TEXT, zodiacLuckTextView.text)
+        intent.setType("text/*")
+
+        val shareIntent = Intent.createChooser(intent, null)
+        startActivity(shareIntent)
+    }
+
+    // Obtiene el dailyLuck del signo elegido
     private fun getZodiacLuck() {
         progress.visibility = View.VISIBLE
         zodiacLuckTextView.text = ""
@@ -164,13 +185,13 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    // Muestra un cuadro de diálogo si ocurre un error al obtener datos del API Rest
     private fun shoErrorDialog() {
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
 
         builder
             .setTitle(R.string.alert_error_title)
             .setMessage(R.string.alert_error_connection)
-
             .setPositiveButton(R.string.alert_ok) {dialog, _ -> dialog?.cancel()}
 
         val dialog: AlertDialog = builder.create()
