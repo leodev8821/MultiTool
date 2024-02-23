@@ -2,8 +2,6 @@ package com.example.multitool.apcalculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.util.LogPrinter
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
@@ -14,10 +12,8 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.example.multitool.R
 import com.google.android.material.textfield.TextInputEditText
-import java.util.logging.Logger
-import kotlin.math.log
 
-class AreaPerimeterCalculator : AppCompatActivity() {
+class APCalculatorActivity : AppCompatActivity() {
 
     lateinit var radioGroupGeometric : RadioGroup
     lateinit var radioCircle : RadioButton

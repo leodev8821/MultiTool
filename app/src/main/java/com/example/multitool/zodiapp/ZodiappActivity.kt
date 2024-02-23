@@ -17,13 +17,18 @@ class ZodiappActivity : AppCompatActivity() {
 
     private var zodiacList:List<Zodiac> = ZodiacProvider().getZodiacs()
     private lateinit var recicleView:RecyclerView
-    private lateinit var adapter: ZodiacAdapter
+    private lateinit var zodiacAdapter: ZodiacAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_zodiapp)
 
         initView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadData()
     }
 
     private fun initView() {
@@ -33,20 +38,23 @@ class ZodiappActivity : AppCompatActivity() {
 
         recicleView = findViewById(R.id.recicleView)
 
-        adapter = ZodiacAdapter(zodiacList){
+    }
+
+    private fun loadData() {
+        zodiacAdapter = ZodiacAdapter(zodiacList) {
             onItemClickListener(it)
         }
-
         recicleView.layoutManager = LinearLayoutManager(this)
-
-        recicleView.adapter = adapter
+        recicleView.adapter = zodiacAdapter
     }
+
+
 
     private fun onItemClickListener(position:Int) {
         val zodiac:Zodiac = zodiacList[position]
 
         val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra("HOROSCOPE_ID", zodiac.id)
+        intent.putExtra(DetailActivity.EXTRA_ID, zodiac.id)
         startActivity(intent)
         //Toast.makeText(this, getString(horoscope.name), Toast.LENGTH_LONG).show()
     }
@@ -72,7 +80,7 @@ class ZodiappActivity : AppCompatActivity() {
 
     private fun initSearchView(searchItem: MenuItem?) {
         if (searchItem != null) {
-            var searchView = searchItem.actionView as SearchView
+            val searchView = searchItem.actionView as SearchView
 
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
@@ -86,7 +94,7 @@ class ZodiappActivity : AppCompatActivity() {
                         zodiacList = ZodiacProvider().getZodiacs()
                             .filter { getString(it.name).contains(query, true) }
                     }
-                    adapter.updateData(zodiacList)
+                    zodiacAdapter.updateData(zodiacList)
                     return true
                 }
             })

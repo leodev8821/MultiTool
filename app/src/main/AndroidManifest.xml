@@ -22,7 +22,7 @@
             android:name=".zodiapp.ZodiappActivity"
             android:exported="false" />
         <activity
-            android:name=".apcalculator.AreaPerimeterCalculator"
+            android:name=".apcalculator.APCalculatorActivity"
             android:exported="false" />
         <activity
             android:name=".tempconversor.TempConversorActivity"

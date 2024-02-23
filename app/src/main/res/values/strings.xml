@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">MultiTool</string>
-    <string name="textWellcome">"Wellcome, please select a tool: "</string>
-    <string name="textConversor">Temperature Conversor</string>
+    <string name="textWellcome">"Welcome, please select a tool: "</string>
+    <string name="textConversor">Temp Converter</string>
     <string name="textCalcIMC">BMI Calculator</string>
     <string name="textAreaCalculator">Area Calculator</string>
+    <string name="buttonDescription">Button</string>
 
     <string name="calculatorActivity">BMICalculator</string>
     <string name="lbl_height">"Height: "</string>
@@ -88,6 +89,10 @@
     <string name="menu_prev" translatable="false">""</string>
     <string name="menu_next" translatable="false">""</string>
     <string name="menu_search">Search</string>
+
+    <string name="alert_error_title">Error</string>
+    <string name="alert_error_connection">There was an error trying to connect to the service</string>
+    <string name="alert_ok">OK</string>
 
 
 </resources>

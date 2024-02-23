@@ -86,6 +86,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun loadData() {
         zodiac = ZodiacProvider().getZodiac(currentZodiacIndex)
+        isFavorite = zodiac.id == session.getFavoriteZodiac()
 
         // Set title
         supportActionBar?.setTitle(zodiac.name);
@@ -93,6 +94,8 @@ class DetailActivity : AppCompatActivity() {
 
         zodiacTextView.text = getString(zodiac.name)
         zodiacImageView.setImageResource(zodiac.image)
+
+        setFavoriteDrawable()
 
         getZodiacLuck()
     }
@@ -149,8 +152,14 @@ class DetailActivity : AppCompatActivity() {
             val result = ZodiacProvider().getZodiacLuck(zodiac.id)
             runOnUiThread {
                 // Modificar UI
-                zodiacLuckTextView.text = result
                 progress.visibility = View.GONE
+
+                if (result != null){
+                    zodiacLuckTextView.text = result
+                }
+                else{
+                    shoErrorDialog()
+                }
             }
         }
     }
@@ -159,9 +168,10 @@ class DetailActivity : AppCompatActivity() {
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
 
         builder
-            .setTitle("Error")
-            .setMessage("Hubo un error en al conectar con el servicio")
-            .setPositiveButton("Vale") {dialog, _ -> dialog?.cancel()}
+            .setTitle(R.string.alert_error_title)
+            .setMessage(R.string.alert_error_connection)
+
+            .setPositiveButton(R.string.alert_ok) {dialog, _ -> dialog?.cancel()}
 
         val dialog: AlertDialog = builder.create()
         dialog.show()

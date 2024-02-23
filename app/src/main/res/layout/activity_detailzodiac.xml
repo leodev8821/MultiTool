@@ -39,8 +39,8 @@
                     android:contentDescription="@string/zodiacImageDescription"/>
                 <ImageButton
                     android:id="@+id/favoriteImageButton"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/favorite_svg"
                     android:scaleType="centerCrop"
                     android:background="@color/transparent"

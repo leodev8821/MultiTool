@@ -62,4 +62,8 @@
     <string name="lblHeight">"Ingrese la altura: "</string>
     <string name="menu_search">Buscar</string>
     <string name="zodiacFavoriteDescription">Favorite</string>
+    <string name="buttonDescription">Botón</string>
+    <string name="alert_error_title">Error</string>
+    <string name="alert_error_connection">Ha ocurrido un error al intentar conectar con el servicio</string>
+    <string name="alert_ok">Vale</string>
 </resources>

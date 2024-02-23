@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.multitool.R
 import com.example.multitool.zodiapp.data.Zodiac
+import com.example.multitool.zodiapp.utils.SessionManager
 
 class ZodiacAdapter(var items:List<Zodiac> = listOf(), val onClickListener: (position:Int) -> Unit) : RecyclerView.Adapter<ZodiacViewHolder>() {
 
@@ -33,6 +34,7 @@ class ZodiacAdapter(var items:List<Zodiac> = listOf(), val onClickListener: (pos
 class ZodiacViewHolder(view:View) : RecyclerView.ViewHolder(view) {
 
     val zodiacImageView:ImageView = view.findViewById(R.id.zodiacImageView)
+    val favoriteImageButton:ImageView = view.findViewById(R.id.favoriteImageButton)
     val zodiacSign:TextView = view.findViewById(R.id.zodiacSign)
     val zodiacDate:TextView = view.findViewById(R.id.zodiacDate)
 
@@ -44,6 +46,13 @@ class ZodiacViewHolder(view:View) : RecyclerView.ViewHolder(view) {
         zodiacDate.text = context.getString(zodiac.date)
 
         zodiacImageView.setImageResource(zodiac.image)
+
+        val favDrawableId = if (zodiac.id == SessionManager(context).getFavoriteZodiac()) {
+            R.drawable.black_heart_svg
+        } else {
+            R.drawable.favorite_svg
+        }
+        favoriteImageButton.setImageResource(favDrawableId)
 
     }
 

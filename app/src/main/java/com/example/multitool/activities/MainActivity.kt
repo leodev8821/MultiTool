@@ -1,13 +1,15 @@
 package com.example.multitool.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.multitool.R
-import com.example.multitool.apcalculator.AreaPerimeterCalculator
+import com.example.multitool.apcalculator.APCalculatorActivity
 import com.example.multitool.imccalculator.IMCCalculatorActivity
 import com.example.multitool.tempconversor.TempConversorActivity
 import com.example.multitool.zodiapp.ZodiappActivity
@@ -41,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonUnitConversor.setOnClickListener {
-            intent = Intent(this, AreaPerimeterCalculator::class.java)
+            intent = Intent(this, APCalculatorActivity::class.java)
             startActivity(intent)
         }
 
@@ -76,5 +78,24 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
+    }
+
+    @SuppressLint("MissingSuperCall")
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        showExitDialog()
+    }
+
+    private fun showExitDialog() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder
+            .setIcon(R.drawable.caution_svg)
+            .setTitle("Cerrar aplicación")
+            .setMessage("Esta seguro de que quiere salir de la aplicación?")
+            .setPositiveButton("Salir") { _, _ -> finish() }
+            .setNegativeButton("No") { dialog, _ -> dialog?.cancel() }
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 }

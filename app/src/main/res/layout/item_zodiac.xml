@@ -10,6 +10,16 @@
     android:orientation="horizontal">
 
     <ImageView
+        android:id="@+id/favoriteImageButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/favorite_svg"
+        android:scaleType="centerCrop"
+        android:background="@color/transparent"
+        android:contentDescription="@string/zodiacFavoriteDescription"
+        android:layout_gravity="center"/>
+
+    <ImageView
         android:id="@+id/zodiacImageView"
         android:layout_width="48dp"
         android:layout_height="48dp"
@@ -18,26 +28,27 @@
         android:src="@drawable/aries_svg"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/zodiacSign"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:text="@string/zodiacNameAries"/>
+        <TextView
+            android:id="@+id/zodiacSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:text="@string/zodiacNameAries"/>
 
-    <TextView
-        android:id="@+id/zodiacDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:textSize="15sp"
-        android:text="@string/zodiacDateAries"/>
+        <TextView
+            android:id="@+id/zodiacDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textSize="15sp"
+            android:text="@string/zodiacDateAries"/>
     </LinearLayout>
 
 </LinearLayout>
