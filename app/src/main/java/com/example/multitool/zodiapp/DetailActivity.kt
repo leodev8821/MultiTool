@@ -29,7 +29,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var session: SessionManager
     private var isFavorite = false
     private lateinit var favoriteImageButton: ImageButton
-    private lateinit var share:ImageButton
+    private var share:MenuItem? = null
 
     private var currentZodiacIndex:Int = -1
     private var zodiacId:String? = null
@@ -103,6 +103,7 @@ class DetailActivity : AppCompatActivity() {
         getZodiacLuck()
     }
 
+    // Cambia el ícono si isFavorite es True o False
     private fun setFavoriteDrawable () {
         val favDrawableId = if (isFavorite) {
             R.drawable.black_heart_svg
@@ -115,6 +116,8 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.zodiapp_detail_menu, menu)
+        share = menu?.findItem(R.id.share)
+        share?.setEnabled(false)
         return true
     }
 
@@ -167,6 +170,7 @@ class DetailActivity : AppCompatActivity() {
     private fun getZodiacLuck() {
         progress.visibility = View.VISIBLE
         zodiacLuckTextView.text = ""
+        share?.setEnabled(false)
 
         CoroutineScope(Dispatchers.IO).launch {
             // Llamada en segundo plano
@@ -181,6 +185,7 @@ class DetailActivity : AppCompatActivity() {
                 else{
                     shoErrorDialog()
                 }
+                share?.setEnabled(true)
             }
         }
     }
