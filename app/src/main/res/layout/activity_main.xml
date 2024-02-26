@@ -136,6 +136,30 @@
                         style="@style/WhiteTitles" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="20dp">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/buttonSearchSuperheroes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/purple_200"
+                    android:src="@drawable/search_svg"
+                    android:contentDescription="@string/buttonDescription"/>
+
+                <TextView
+                    android:id="@+id/textSearchSuperheroes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="start|center"
+                    android:text="Super Search"
+                    style="@style/WhiteTitles" />
+            </LinearLayout>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

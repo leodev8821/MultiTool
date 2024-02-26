@@ -16,7 +16,7 @@
         android:theme="@style/Theme.MultiTool"
         tools:targetApi="31">
         <activity
-            android:name=".superheroes.SuperHeroesActivity"
+            android:name=".superheroes.activities.SuperHeroesActivity"
             android:exported="false" />
         <activity
             android:name=".zodiapp.DetailActivity"
