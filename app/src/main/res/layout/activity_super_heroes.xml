@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".superheroes.activities.SuperHeroesActivity">
 
+    <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +28,7 @@
             android:src="@drawable/search_svg"
             android:contentDescription="ImageButton search"/>
 
-    </LinearLayout>
+    </LinearLayout> -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
