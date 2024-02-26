@@ -92,8 +92,8 @@ class DetailActivity : AppCompatActivity() {
         isFavorite = zodiac.id == session.getFavoriteZodiac()
 
         // Set title
-        supportActionBar?.setTitle(zodiac.name);
-        supportActionBar?.setSubtitle(zodiac.date);
+        supportActionBar?.setTitle(zodiac.name)
+        supportActionBar?.setSubtitle(zodiac.date)
 
         zodiacTextView.text = getString(zodiac.name)
         zodiacImageView.setImageResource(zodiac.image)
