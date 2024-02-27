@@ -13,7 +13,7 @@ import com.example.multitool.zodiapp.adapters.ZodiacAdapter
 import com.example.multitool.zodiapp.data.Zodiac
 import com.example.multitool.zodiapp.data.ZodiacProvider
 
-class ZodiappActivity : AppCompatActivity() {
+class MainActivityZodiapp : AppCompatActivity() {
 
     private var zodiacList:List<Zodiac> = ZodiacProvider().getZodiacs()
     private lateinit var recicleView:RecyclerView
@@ -53,8 +53,8 @@ class ZodiappActivity : AppCompatActivity() {
     private fun onItemClickListener(position:Int) {
         val zodiac:Zodiac = zodiacList[position]
 
-        val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra(DetailActivity.EXTRA_ID, zodiac.id)
+        val intent = Intent(this, DetailActivityZodiapp::class.java)
+        intent.putExtra(DetailActivityZodiapp.EXTRA_ID, zodiac.id)
         startActivity(intent)
         //Toast.makeText(this, getString(horoscope.name), Toast.LENGTH_LONG).show()
     }

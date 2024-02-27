@@ -16,13 +16,16 @@
         android:theme="@style/Theme.MultiTool"
         tools:targetApi="31">
         <activity
-            android:name=".superheroes.activities.SuperHeroesActivity"
+            android:name=".superheroes.activities.DetailActivitySuperheroes"
             android:exported="false" />
         <activity
-            android:name=".zodiapp.DetailActivity"
+            android:name=".superheroes.activities.MainActivitySuperheroes"
             android:exported="false" />
         <activity
-            android:name=".zodiapp.ZodiappActivity"
+            android:name=".zodiapp.DetailActivityZodiapp"
+            android:exported="false" />
+        <activity
+            android:name=".zodiapp.MainActivityZodiapp"
             android:exported="false" />
         <activity
             android:name=".apcalculator.APCalculatorActivity"

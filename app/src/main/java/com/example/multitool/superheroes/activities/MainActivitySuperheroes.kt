@@ -1,5 +1,6 @@
 package com.example.multitool.superheroes.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -7,24 +8,24 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.multitool.R
-import com.example.multitool.databinding.ActivitySuperHeroesBinding
+import com.example.multitool.databinding.ActivitySuperheroesBinding
 import com.example.multitool.superheroes.adapters.SuperheroAdapter
-import com.example.multitool.superheroes.data.SuperheroesResponse
+import com.example.multitool.superheroes.data.Superhero
 import com.example.multitool.superheroes.data.SuperheroesServiceAPI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class SuperHeroesActivity : AppCompatActivity() {
+class MainActivitySuperheroes : AppCompatActivity() {
 
-    private lateinit var binding:ActivitySuperHeroesBinding
+    private lateinit var binding:ActivitySuperheroesBinding
     private lateinit var adapter: SuperheroAdapter
+    private var heroList: List<Superhero> = listOf()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,16 +34,17 @@ class SuperHeroesActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        binding = ActivitySuperHeroesBinding.inflate(layoutInflater)
+
+        // Show Back Button
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding = ActivitySuperheroesBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
-        /*binding.ImageButtonSearch.setOnClickListener({
-            val searchText = binding.EditTextSearch.text.toString()
-            searchSuperheroes(searchText)
-        })*/
-
-        adapter = SuperheroAdapter(listOf()) {}
+        adapter = SuperheroAdapter() {
+            onItemClickListener(it)
+        }
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(this, 2)
     }
@@ -73,6 +75,17 @@ class SuperHeroesActivity : AppCompatActivity() {
         }
     }
 
+    private fun onItemClickListener(position:Int) {
+        val hero:Superhero  = heroList[position]
+
+        val intent = Intent(this, DetailActivitySuperheroes::class.java)
+        intent.putExtra(DetailActivitySuperheroes.EXTRA_ID, hero.id)
+        intent.putExtra(DetailActivitySuperheroes.EXTRA_NAME, hero.name)
+        intent.putExtra(DetailActivitySuperheroes.EXTRA_IMAGE, hero.image.url)
+        intent.putExtra(DetailActivitySuperheroes.EXTRA_STATS, hero.powerstats)
+        startActivity(intent)
+    }
+
     private fun searchSuperheroes(query: String) {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://www.superheroapi.com/")
@@ -84,21 +97,19 @@ class SuperHeroesActivity : AppCompatActivity() {
          // Se hace la Co-Rutina para realizar la query
         CoroutineScope(Dispatchers.IO).launch {
             // Llamada en segundo plano
-            val response:Response<SuperheroesResponse> = service.searchByName(query)
+            val response = service.searchByName(query)
 
             runOnUiThread {
                 // Modificar UI
                 if (response.body() != null) {
                     Log.i("HTTP", "respuesta correcta :)")
-                    adapter.updateItems(response.body()?.results)
+                    heroList = response.body()?.results.orEmpty().toList()
+                    adapter.updateItems(heroList)
                 } else {
                     Log.i("HTTP", "respuesta erronea :(")
                 }
 
             }
         }
-
-
-
     }
 }

@@ -8,5 +8,7 @@ interface SuperheroesServiceAPI {
 
     @GET("api.php/7252591128153666/search/{name}")
     suspend fun searchByName(@Path("name") query:String) : Response<SuperheroesResponse>
+    @GET("api.php/7252591128153666/{id}")
+    suspend fun searchById(@Path("id") identifier:String) : Response<Superhero>
 
 }

@@ -20,7 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivityZodiapp : AppCompatActivity() {
 
     companion object {
         const val EXTRA_ID = "HOROSCOPE_ID"

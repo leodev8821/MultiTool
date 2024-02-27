@@ -29,6 +29,17 @@
             android:layout_gravity="bottom"
             tools:text="Nombre"/>
 
+        <TextView
+            android:id="@+id/messageTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_gravity="center|bottom"
+            android:text="No Superhero found"
+            android:visibility="gone"/>
+
     </FrameLayout>
 
 </androidx.cardview.widget.CardView>
