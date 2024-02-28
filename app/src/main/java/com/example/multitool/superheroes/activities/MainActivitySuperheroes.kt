@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,6 +14,7 @@ import com.example.multitool.databinding.ActivitySuperheroesBinding
 import com.example.multitool.superheroes.adapters.SuperheroAdapter
 import com.example.multitool.superheroes.data.Superhero
 import com.example.multitool.superheroes.data.SuperheroesServiceAPI
+import com.example.multitool.superheroes.utils.RetrofitProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,26 +29,33 @@ class MainActivitySuperheroes : AppCompatActivity() {
     private var heroList: List<Superhero> = listOf()
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?){
 
+        super.onCreate(savedInstanceState)
         initView()
     }
 
     private fun initView() {
 
-        // Show Back Button
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        initActionBar()
 
         binding = ActivitySuperheroesBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         adapter = SuperheroAdapter() {
             onItemClickListener(it)
         }
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(this, 2)
+
+        binding.progress.visibility = View.GONE
+        binding.recyclerView.visibility = View.GONE
+        binding.emptyPlaceholder.visibility = View.VISIBLE
+    }
+
+    private fun initActionBar() {
+        // Show Back Button
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -82,29 +91,37 @@ class MainActivitySuperheroes : AppCompatActivity() {
         intent.putExtra(DetailActivitySuperheroes.EXTRA_ID, hero.id)
         intent.putExtra(DetailActivitySuperheroes.EXTRA_NAME, hero.name)
         intent.putExtra(DetailActivitySuperheroes.EXTRA_IMAGE, hero.image.url)
-        intent.putExtra(DetailActivitySuperheroes.EXTRA_STATS, hero.powerstats)
+        //intent.putExtra(DetailActivitySuperheroes.EXTRA_STATS, hero.powerstats)
         startActivity(intent)
     }
 
     private fun searchSuperheroes(query: String) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://www.superheroapi.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        binding.progress.visibility = View.VISIBLE
 
-        val service: SuperheroesServiceAPI = retrofit.create(SuperheroesServiceAPI::class.java)
+        val service: SuperheroesServiceAPI = RetrofitProvider.getRetrofit()
 
          // Se hace la Co-Rutina para realizar la query
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(
+            Dispatchers.IO
+        ).launch {
             // Llamada en segundo plano
             val response = service.searchByName(query)
 
             runOnUiThread {
+                binding.progress.visibility = View.GONE
                 // Modificar UI
                 if (response.body() != null) {
                     Log.i("HTTP", "respuesta correcta :)")
-                    heroList = response.body()?.results.orEmpty().toList()
+                    heroList = response.body()?.results.orEmpty()
                     adapter.updateItems(heroList)
+
+                    if (heroList.isNotEmpty()) {
+                        binding.recyclerView.visibility = View.VISIBLE
+                        binding.emptyPlaceholder.visibility = View.GONE
+                    } else {
+                        binding.recyclerView.visibility = View.GONE
+                        binding.emptyPlaceholder.visibility = View.VISIBLE
+                    }
                 } else {
                     Log.i("HTTP", "respuesta erronea :(")
                 }

@@ -14,7 +14,7 @@ class Superhero (
     @SerializedName("id") val id:String,
     @SerializedName("name") val name:String,
     @SerializedName("image") val image: Image,
-    @SerializedName("powerstats") val powerstats:Array<PowerStats>
+    @SerializedName("powerstats") val powerstats:PowerStats
 ) {
 
 }
@@ -26,12 +26,11 @@ class Image(
 }
 
 class PowerStats(
-    @SerializedName("intelligence") val intelligence:Int,
-    @SerializedName("strength") val strength:Int,
-    @SerializedName("speed") val speed:Int,
-    @SerializedName("durability") val durability:Int,
-    @SerializedName("power") val power:Int,
-    @SerializedName("combat") val combat:Int,
+    @SerializedName("intelligence") val intelligence:String,
+    @SerializedName("strength") val strength:String,
+    @SerializedName("speed") val speed:String,
+    @SerializedName("durability") val durability:String,
+    @SerializedName("power") val power:String,
+    @SerializedName("combat") val combat:String,
 ){
-
 }

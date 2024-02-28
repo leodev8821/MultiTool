@@ -66,4 +66,6 @@
     <string name="alert_error_title">Error</string>
     <string name="alert_error_connection">Ha ocurrido un error al intentar conectar con el servicio</string>
     <string name="alert_ok">Vale</string>
+    <string name="empty_superheroes_title">Ningún superhéroe para mostrar</string>
+    <string name="empty_superheroes_advice">Presione la lupa para buscar un superhéroe</string>
 </resources>
