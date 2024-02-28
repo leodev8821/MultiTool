@@ -74,6 +74,7 @@ class MainActivitySuperheroes : AppCompatActivity() {
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     searchSuperheroes(query!!)
+                    searchView.clearFocus()
                     return true
                 }
 
@@ -91,7 +92,6 @@ class MainActivitySuperheroes : AppCompatActivity() {
         intent.putExtra(DetailActivitySuperheroes.EXTRA_ID, hero.id)
         intent.putExtra(DetailActivitySuperheroes.EXTRA_NAME, hero.name)
         intent.putExtra(DetailActivitySuperheroes.EXTRA_IMAGE, hero.image.url)
-        //intent.putExtra(DetailActivitySuperheroes.EXTRA_STATS, hero.powerstats)
         startActivity(intent)
     }
 

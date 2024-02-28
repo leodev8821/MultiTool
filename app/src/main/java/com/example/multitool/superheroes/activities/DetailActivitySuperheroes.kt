@@ -22,7 +22,6 @@ class DetailActivitySuperheroes : AppCompatActivity() {
         const val EXTRA_ID = "HERO_ID"
         const val EXTRA_NAME = "HERO_NAME"
         const val EXTRA_IMAGE = "EXTRA_IMAGE"
-        const val EXTRA_STATS = "EXTRA_STATS"
     }
 
     private var heroId:String? = null
@@ -45,19 +44,19 @@ class DetailActivitySuperheroes : AppCompatActivity() {
         initActionBar()
 
         heroId = intent.getStringExtra(EXTRA_ID)
-        var heroName = intent.getStringExtra(EXTRA_NAME)
-        var heroImage = intent.getStringExtra(EXTRA_IMAGE)
-        var powerStats= intent.getStringExtra(EXTRA_STATS)
+        val heroName = intent.getStringExtra(EXTRA_NAME)
+        val heroImage = intent.getStringExtra(EXTRA_IMAGE)
 
         binding.toolbarLayout.title = heroName
         Picasso.get().load(heroImage).into(binding.photoImageView)
-        binding.powerstatsTextView.text = powerStats
 
         findSuperHeroById(heroId!!)
 
     }
 
     private fun initActionBar() {
+        setSupportActionBar(binding.toolbar)
+
         // Show back button
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
     }
@@ -88,13 +87,37 @@ class DetailActivitySuperheroes : AppCompatActivity() {
                 if (response.body() != null) {
                     Log.i("HTTP", "respuesta correcta :)")
                     superhero = response.body()!!
-                    binding.toolbarLayout.title = superhero.name
-                    Log.i("PowerStats: ", superhero.powerstats.toString())
+                    loadData()
                 } else {
                     Log.i("HTTP", "respuesta erronea :(")
                 }
             }
         }
+    }
+
+    private fun loadData(){
+        // Title
+        binding.toolbarLayout.title = superhero.name
+
+        // Stats
+        binding.content.valueIntelligenceTextView.text = superhero.powerstats.intelligence
+        binding.content.intelligenceProgressBar.setProgress(superhero.powerstats.intelligence.toInt())
+
+        binding.content.valuestrengthTextView.text = superhero.powerstats.strength
+        binding.content.strengthProgressBar.setProgress(superhero.powerstats.strength.toInt())
+
+        binding.content.valueSpeedTextView.text = superhero.powerstats.speed
+        binding.content.speedProgressBar.setProgress(superhero.powerstats.speed.toInt())
+
+        binding.content.valueDurabilityTextView.text = superhero.powerstats.durability
+        binding.content.durabilityProgressBar.setProgress(superhero.powerstats.durability.toInt())
+
+        binding.content.valuePowerTextView.text = superhero.powerstats.power
+        binding.content.powerProgressBar.setProgress(superhero.powerstats.power.toInt())
+
+        binding.content.valueCombatTextView.text = superhero.powerstats.combat
+        binding.content.combatProgressBar.setProgress(superhero.powerstats.combat.toInt())
+
     }
 
 }

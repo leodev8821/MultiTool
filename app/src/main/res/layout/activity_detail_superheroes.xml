@@ -47,18 +47,9 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/powerstatsTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PowerStats:"/>
-
-        </LinearLayout>
+        <include
+            android:id="@+id/content"
+            layout="@layout/detail_superheroes_content"/>
 
     </androidx.core.widget.NestedScrollView>
 

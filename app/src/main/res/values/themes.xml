@@ -68,7 +68,13 @@
         <item name="android:height">50dp</item>
     </style>
 
-    <style name="Base.Theme.MultiTool.NoActionBar">
+    <style name="Base.Theme.Superheroes" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <style name="Base.Theme.MultiTool.NoActionBar" parent="Base.Theme.Superheroes">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
