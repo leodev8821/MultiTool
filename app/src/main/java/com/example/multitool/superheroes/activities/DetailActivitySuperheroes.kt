@@ -118,6 +118,11 @@ class DetailActivitySuperheroes : AppCompatActivity() {
         binding.content.valueCombatTextView.text = superhero.powerstats.combat
         binding.content.combatProgressBar.setProgress(superhero.powerstats.combat.toInt())
 
+        // Biography
+        binding.content.valueFullNameTextView.text = superhero.biography.full_name
+        binding.content.valueAlterEgosTextView.text = superhero.biography.alter_egos
+        binding.content.contentAliases.alias1TextView.text = superhero.biography.aliases.toString()
+
     }
 
 }
