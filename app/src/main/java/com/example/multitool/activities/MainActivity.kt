@@ -13,6 +13,7 @@ import com.example.multitool.apcalculator.APCalculatorActivity
 import com.example.multitool.imccalculator.IMCCalculatorActivity
 import com.example.multitool.superheroes.activities.MainActivitySuperheroes
 import com.example.multitool.tempconversor.TempConversorActivity
+import com.example.multitool.todoApp.activities.ToDoAppMainActivity
 import com.example.multitool.zodiapp.MainActivityZodiapp
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var buttonUnitConversor : FloatingActionButton
     lateinit var buttonZodiapp : FloatingActionButton
     lateinit var buttonSearchSuperheroes : FloatingActionButton
+    lateinit var buttonToDoList:FloatingActionButton
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         buttonUnitConversor = findViewById(R.id.buttonUnitConversor)
         buttonZodiapp = findViewById(R.id.buttonZodiapp)
         buttonSearchSuperheroes = findViewById(R.id.buttonSearchSuperheroes)
+        buttonToDoList = findViewById(R.id.buttonToDoList)
 
         buttonCalcIMC.setOnClickListener {
             intent = Intent(this, IMCCalculatorActivity::class.java)
@@ -57,6 +60,11 @@ class MainActivity : AppCompatActivity() {
 
         buttonSearchSuperheroes.setOnClickListener {
             intent = Intent(this, MainActivitySuperheroes::class.java)
+            startActivity(intent)
+        }
+
+        buttonToDoList.setOnClickListener {
+            intent = Intent(this, ToDoAppMainActivity::class.java)
             startActivity(intent)
         }
 

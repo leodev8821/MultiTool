@@ -98,5 +98,8 @@
     <string name="empty_superheroes_title">No Superheroes to show</string>
     <string name="empty_superheroes_advice">Press the magnifying glass to search for a Superhero</string>
 
+    <!-- To Do App -->
+    <string name="todoAppButton">ToDo App</string>
+
 
 </resources>
