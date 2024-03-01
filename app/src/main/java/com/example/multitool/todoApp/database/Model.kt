@@ -20,6 +20,8 @@ class TasksModel {
                     "${TaskEntry.COLUMN_DONE} BOOLEAN)"
 
         const val SQL_DELETE_TABLE = "DROP TABLE IF EXISTS ${TaskEntry.TABLE_NAME}"
+
+        const val TABLE_NAME = "Task"
     }
 
     // Table contents are grouped together in an anonymous object.
