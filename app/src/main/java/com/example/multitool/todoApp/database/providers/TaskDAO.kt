@@ -11,7 +11,7 @@ import com.example.multitool.todoApp.database.TasksModel
 
 class TaskDAO(context: Context){
 
-    val databaseManager: DataBaseManager = DataBaseManager(context)
+    private val databaseManager: DataBaseManager = DataBaseManager(context)
 
     fun insert(task: Task): Task {
 

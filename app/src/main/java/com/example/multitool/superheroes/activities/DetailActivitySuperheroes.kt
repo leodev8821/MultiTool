@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import com.example.multitool.R
 import com.example.multitool.databinding.ActivityDetailSuperheroesBinding
 import com.example.multitool.superheroes.data.Superhero
 import com.example.multitool.superheroes.data.SuperheroesServiceAPI
@@ -13,8 +12,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+
 
 class DetailActivitySuperheroes : AppCompatActivity() {
 
@@ -58,7 +56,7 @@ class DetailActivitySuperheroes : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         // Show back button
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

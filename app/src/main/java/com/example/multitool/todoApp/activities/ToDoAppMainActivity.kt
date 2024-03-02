@@ -1,55 +1,48 @@
 package com.example.multitool.todoApp.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.MenuItem
 import com.example.multitool.R
-import com.example.multitool.todoApp.database.Task
-import com.example.multitool.todoApp.database.providers.TaskDAO
+import com.example.multitool.databinding.ActivityTodoappMainBinding
 
 
 class ToDoAppMainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityTodoappMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_to_do_app_main)
+        setContentView(R.layout.activity_todoapp_main)
+         initView()
+    }
 
-        var task = Task(-1,"2024-02-04","Hacer compra", "Hogar", false)
+    private fun initView(){
 
-        val taskDAO = TaskDAO(this)
+        // Show Back Button
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        task = taskDAO.insert(task)
+        binding = ActivityTodoappMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val taskList = taskDAO.findAll()
-
-        for(task in taskList){
-            Log.i("DATABASE", task.toString())
+        // To launch NewTaskActivity from the newTaskButton
+        binding.newTaskButton.setOnClickListener{
+            intent = Intent(this, NewTaskActivity::class.java)
+            startActivity(intent)
         }
 
-        var task2: Task? = taskDAO.find(2)
+    }
 
-        if(task2 != null){
-            Log.i("DATABASE", task2.toString())
-
-            task2.task = "Lavar coche"
-
-            taskDAO.update(task2)
-        }
-
-        task2 = taskDAO.find(2)
-        Log.i("DATABASE", task2.toString())
-
-        if(task2 != null){
-            taskDAO.delete(task2)
-            task2 = taskDAO.find(2)
-
-            if(task2 != null){
-                Log.i("DATABASE", task2.toString())
-            }
-            else{
-                Log.i("DATABASE", "La tarea ha sido borrada")
+    // To listen the item selected in a menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
             }
         }
+        return super.onOptionsItemSelected(item)
 
     }
 }
