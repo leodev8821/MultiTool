@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
+    android:padding="5dp"
     android:gravity="center"
     android:clickable="true"
     android:focusable="true"
@@ -15,28 +15,27 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_gravity="center"
-        android:gravity="center"
         android:layout_margin="20dp"
         android:textStyle="bold"
-        android:textSize="30sp"
+        android:textSize="20sp"
         tools:text="Task 1"/>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:layout_margin="5dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/itemCategoryTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:textSize="20sp"
+            android:textSize="15sp"
+            android:layout_gravity="center"
             android:gravity="center"
-            tools:text="Category"
-            android:layout_gravity="center"/>
+            tools:text="Category" />
 
         <TextView
             android:id="@+id/itemDateTextView"
@@ -44,17 +43,15 @@
             android:layout_height="0dp"
             android:layout_weight="0.5"
             android:textSize="15sp"
-            tools:text="2024-01-02"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:layout_gravity="center"/>
+            tools:text="2024-01-02"/>
     </LinearLayout>
 
     <RadioButton
         android:id="@+id/itemDoneRadioButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:gravity="center"
-        tools:text="Done?"
-        android:layout_gravity="center"/>
+        android:layout_margin="5dp"
+        android:layout_weight="0.5" />
 </LinearLayout>

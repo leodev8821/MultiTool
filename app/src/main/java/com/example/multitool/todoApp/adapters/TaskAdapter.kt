@@ -12,6 +12,7 @@ class TaskAdapter(
     private var items:List<Task> = listOf(),
     val onClickListener: (position:Int) -> Unit) : RecyclerView.Adapter<TaskViewHolder>() {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val binding = ItemTodoappBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TaskViewHolder(binding)
@@ -28,14 +29,15 @@ class TaskAdapter(
 
 class TaskViewHolder(val binding:ItemTodoappBinding) : RecyclerView.ViewHolder(binding.root){
 
-    val context:Context = itemView.context
-    val taskDAO = TaskDAO(context)
-    val list = taskDAO.findAll()
-
     fun render(task: Task){
-        binding.itemTaskTextView.text = (list[1]).toString()
-        binding.itemCategoryTextView.text = (list[2]).toString()
-        binding.itemDateTextView.text = (list[3]).toString()
-        //binding.itemDoneRadioButton.text = task.done.toString()
+        binding.itemTaskTextView.text = task.task
+        binding.itemCategoryTextView.text = task.category
+        binding.itemDateTextView.text = task.date
+
+        if(task.done.toString() == "true"){
+            binding.itemDoneRadioButton.setChecked(true)
+        }else{
+            binding.itemDoneRadioButton.setChecked(false)
+        }
     }
 }

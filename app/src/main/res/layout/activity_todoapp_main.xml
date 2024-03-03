@@ -21,13 +21,13 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/topCard"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
         android:padding="10dp"
-        android:layout_margin="25dp"
+        android:layout_margin="15dp"
         app:layout_constraintTop_toBottomOf="@+id/todolistTitleTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/newTaskButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         style="@style/ZodiappCardViewStyle">
 
         <LinearLayout
@@ -35,27 +35,63 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Task"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Category/Date"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Done?"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/todolistRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/lblTitle"/>
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:layout_margin="10dp"
+                android:padding="10dp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/newTaskButton"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:layout_margin="10dp"
+                android:src="@drawable/plus_svg"
+                android:tooltipText="New Task"
+                android:layout_gravity="bottom|end"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/newTaskButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/to_do_list_svg"
-        android:tooltipText="New Task"
-        app:layout_constraintTop_toBottomOf="@+id/topCard"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,7 @@
 package com.example.multitool.todoApp.activities
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +40,10 @@ class NewTaskActivity : AppCompatActivity() {
 
             newTask(date,task,category,done)
             clearForm()
+
+            intent = Intent(this, ToDoAppMainActivity::class.java)
+            finish()
+            startActivity(intent)
 
             Toast.makeText(this, "New Task was created", Toast.LENGTH_LONG).show()
 
@@ -82,7 +86,9 @@ class NewTaskActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
+                intent = Intent(this, ToDoAppMainActivity::class.java)
                 finish()
+                startActivity(intent)
                 return true
             }
         }

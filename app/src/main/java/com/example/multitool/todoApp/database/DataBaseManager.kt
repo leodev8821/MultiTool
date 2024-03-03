@@ -8,7 +8,7 @@ class DataBaseManager (context: Context):
     SQLiteOpenHelper(context, TasksModel.DATABASE_NAME, null, TasksModel.DATABASE_VERSION){
 
     override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL(TasksModel.SQL_CREATE_TABLE)
+        db.execSQL(TasksModel.SQL_CREATE_TABLE_TASK)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -23,7 +23,7 @@ class DataBaseManager (context: Context):
     }
 
     private fun onDelete(db: SQLiteDatabase){
-        db.execSQL(TasksModel.SQL_DELETE_TABLE)
+        db.execSQL(TasksModel.SQL_DELETE_TABLE_TASK)
     }
 
 }
