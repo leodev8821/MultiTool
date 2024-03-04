@@ -82,7 +82,7 @@ class TaskDAO(context: Context){
 
         if (cursor.moveToNext()){
             val id = cursor.getInt(cursor.getColumnIndex(TasksModel.COLUMN_NAME_ID))
-            val date = cursor.getString(cursor.getColumnIndex(TasksModel.COLUMN_DATE))
+            val date = cursor.getString(cursor.getColumnIndex(TasksModel.COLUMN_DATE)).toLong()
             val taskName = cursor.getString(cursor.getColumnIndex(TasksModel.COLUMN_TASK))
             val category = cursor.getString(cursor.getColumnIndex(TasksModel.COLUMN_CATEGORY))
             val done = cursor.getInt(cursor.getColumnIndex(TasksModel.COLUMN_DONE)) == 1
@@ -116,7 +116,7 @@ class TaskDAO(context: Context){
 
         while (cursor.moveToNext()){
             val id = cursor.getInt(cursor.getColumnIndex(TasksModel.COLUMN_NAME_ID))
-            val date = cursor.getString(cursor.getColumnIndex(TasksModel.COLUMN_DATE))
+            val date = cursor.getString(cursor.getColumnIndex(TasksModel.COLUMN_DATE)).toLong()
             val taskName = cursor.getString(cursor.getColumnIndex(TasksModel.COLUMN_TASK))
             val category = cursor.getString(cursor.getColumnIndex(TasksModel.COLUMN_CATEGORY))
             val done = cursor.getInt(cursor.getColumnIndex(TasksModel.COLUMN_DONE)) == 1

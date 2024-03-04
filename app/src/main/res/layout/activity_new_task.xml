@@ -94,31 +94,29 @@
                 android:layout_gravity="center"
                 tools:text="Creation date: 2024-02-17"/>
 
-            <RadioGroup
-                android:id="@+id/doneRadioGroup"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center">
 
-                <RadioButton
-                    android:id="@+id/doneRadioButton"
+                <TextView
+                    android:id="@+id/doneTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Done "
+                    tools:text="Done?: "
                     android:layout_gravity="center"
                     android:gravity="center"/>
 
-                <RadioButton
-                    android:id="@+id/unDoneRadioButton"
+                <CheckBox
+                    android:id="@+id/doneCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Undone "
                     android:layout_gravity="center"
                     android:gravity="center"/>
-            </RadioGroup>
+            </LinearLayout>
 
         </LinearLayout>
 

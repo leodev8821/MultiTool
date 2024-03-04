@@ -9,7 +9,7 @@ class TasksModel {
     companion object{
 
         const val DATABASE_NAME = "ToDoApp.db"
-        const val DATABASE_VERSION = 3
+        const val DATABASE_VERSION = 4
         const val COLUMN_NAME_ID = "_id"
         const val TABLE_NAME = "Task"
         const val COLUMN_DATE = "Date"
@@ -29,7 +29,7 @@ class TasksModel {
         const val SQL_CREATE_TABLE_TASK =
             "CREATE TABLE $TABLE_NAME (" +
             "$COLUMN_NAME_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "$COLUMN_DATE TEXT," +
+            "$COLUMN_DATE INTEGER," +
             "$COLUMN_TASK TEXT," +
             "$COLUMN_CATEGORY TEXT," +
             "$COLUMN_DONE BOOLEAN)"

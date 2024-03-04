@@ -10,15 +10,10 @@
     android:background="?android:attr/selectableItemBackground"
     android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/itemTaskTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_margin="20dp"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        tools:text="Task 1"/>
+    <CheckBox
+        android:id="@+id/itemDoneCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -43,15 +38,18 @@
             android:layout_height="0dp"
             android:layout_weight="0.5"
             android:textSize="15sp"
-            android:layout_gravity="center"
             android:gravity="center"
-            tools:text="2024-01-02"/>
+            tools:text="04-March-2024"/>
     </LinearLayout>
 
-    <RadioButton
-        android:id="@+id/itemDoneRadioButton"
+    <TextView
+        android:id="@+id/itemTaskTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_weight="0.5" />
+        android:layout_weight="2"
+        android:layout_margin="20dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        tools:text="Task 1"/>
+
 </LinearLayout>
