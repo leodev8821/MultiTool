@@ -9,8 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.multitool.R
 import com.example.multitool.databinding.ActivityTodoappMainBinding
+import com.example.multitool.todoApp.adapters.CategoryAdapter
 import com.example.multitool.todoApp.adapters.TaskAdapter
+import com.example.multitool.todoApp.database.Category
 import com.example.multitool.todoApp.database.Task
+import com.example.multitool.todoApp.database.providers.CategoryDAO
 import com.example.multitool.todoApp.database.providers.TaskDAO
 
 
@@ -21,7 +24,11 @@ class ToDoAppMainActivity : AppCompatActivity() {
     private lateinit var taskList:List<Task>
     private lateinit var taskAdapter:TaskAdapter
 
+    private lateinit var categoryList:List<Category>
+    private lateinit var categoryAdapter: CategoryAdapter
+
     private lateinit var taskDAO:TaskDAO
+    private lateinit var categoryDAO:CategoryDAO
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +45,7 @@ class ToDoAppMainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         taskDAO = TaskDAO(this)
+        categoryDAO = CategoryDAO(this)
 
         loadData()
 
@@ -50,24 +58,29 @@ class ToDoAppMainActivity : AppCompatActivity() {
 
     }
 
-    private fun changeDone(position: Int){
+    fun modifyTask(position: Int){
         val task:Task = taskList[position]
         task.done = !task.done
         taskDAO.update(task)
-        taskAdapter.notifyDataSetChanged()
+        taskAdapter.notifyItemChanged(position)
     }
 
     private fun deleteTask(position:Int){
         val task:Task = taskList[position]
         taskDAO.delete(task)
         refreshData()
+    }
 
+    private fun refreshData() {
+        taskList = taskDAO.findAll()
+        taskAdapter.updateData(taskList)
     }
 
     private fun loadData() {
         taskList = taskDAO.findAll()
+        categoryList = categoryDAO.findAll()
 
-        taskAdapter = TaskAdapter(taskList, {
+        taskAdapter = TaskAdapter(taskList,{
             onItemClickListener(it)
         }, {
             onCheckBoxListener(it)
@@ -75,11 +88,6 @@ class ToDoAppMainActivity : AppCompatActivity() {
         val recycler:RecyclerView = binding.todolistRecyclerView
         recycler.layoutManager = LinearLayoutManager(this)
         recycler.adapter = taskAdapter
-    }
-
-    private fun refreshData() {
-        taskList = taskDAO.findAll()
-        taskAdapter.updateData(taskList)
     }
 
     private fun onItemClickListener(position: Int) {
@@ -98,7 +106,7 @@ class ToDoAppMainActivity : AppCompatActivity() {
             .setTitle(title)
             .setMessage(
                 "Category: $category "+
-                        "\nDone?: $done "
+                "\nDone?: $done "
             )
             .setPositiveButton("Delete") { _, _ -> deleteTask(position)}
             .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss()}
@@ -108,8 +116,7 @@ class ToDoAppMainActivity : AppCompatActivity() {
     }
 
     private fun onCheckBoxListener(position: Int) {
-        //cambiar el checkbox done
-
+        modifyTask(position)
     }
 
     // To listen the item selected in a menu

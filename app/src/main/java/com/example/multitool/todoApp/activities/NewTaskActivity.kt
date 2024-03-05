@@ -9,11 +9,17 @@ import com.example.multitool.databinding.ActivityNewTaskBinding
 import com.example.multitool.todoApp.database.Task
 import com.example.multitool.todoApp.database.providers.TaskDAO
 import android.text.format.DateFormat
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
+import com.example.multitool.databinding.NewcategoryEdittextBinding
+import com.example.multitool.todoApp.database.Category
+import com.example.multitool.todoApp.database.providers.CategoryDAO
 import java.util.Calendar
 
 class NewTaskActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityNewTaskBinding
+    private lateinit var bindingEditText: NewcategoryEdittextBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,7 +40,7 @@ class NewTaskActivity : AppCompatActivity() {
 
         binding.saveNewTaskButton.setOnClickListener{
             val task:String = binding.newTaskEditText.text.toString()
-            val category:String = binding.categoryEditText.text.toString()
+            val category:String = binding.categorySpinner.toString()
             val done:Boolean = binding.doneCheckBox.isChecked
 
             newTask(task,category,done)
@@ -45,9 +51,37 @@ class NewTaskActivity : AppCompatActivity() {
             startActivity(intent)
 
             Toast.makeText(this, "New Task was created", Toast.LENGTH_LONG).show()
-
         }
 
+        binding.newCategoryFloatingButton.setOnClickListener {
+            alertNewCategory()
+        }
+
+    }
+
+    private fun alertNewCategory(){
+        val newCategoryView:EditText = bindingEditText.newCategoryEditText
+        val newCategoryText:String = bindingEditText.newCategoryEditText.text.toString()
+
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder
+            .setTitle("Add new category")
+            .setView(newCategoryView)
+            .setPositiveButton("OK") { _, _ -> newCategory(newCategoryText)}
+            .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss()}
+
+        builder.show()
+    }
+
+    private fun newCategory(category:String?){
+        if(category != null){
+            val newCategory = Category(-1, category)
+            val categoryDAO = CategoryDAO(this)
+            categoryDAO.insert(newCategory)
+        }
+        else{
+            Toast.makeText(this, "Please, add a category name", Toast.LENGTH_LONG).show()
+        }
     }
 
     /*
@@ -87,7 +121,7 @@ class NewTaskActivity : AppCompatActivity() {
      */
     private fun clearForm(){
         binding.newTaskEditText.text?.clear()
-        binding.categoryEditText.text?.clear()
+        //binding.categoryEditText.text?.clear()
         binding.doneCheckBox.isChecked= false
     }
 

@@ -13,7 +13,7 @@
         android:id="@+id/newTaskTitleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Task"
+        android:text="@string/new_task"
         style="@style/AppTitles"/>
 
     <androidx.cardview.widget.CardView
@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="20sp"
-                    android:text="New Task: "
+                    android:text="@string/new_task_Text_View"
                     android:gravity="center"
                     android:layout_gravity="center"/>
 
@@ -54,7 +54,7 @@
                     android:gravity="center"
                     android:textSize="20sp"
                     android:layout_gravity="center|end"
-                    android:hint="New Task Name"/>
+                    android:hint="@string/new_task_name"/>
 
             </LinearLayout>
 
@@ -71,19 +71,26 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="20sp"
-                    android:text="Category: "
+                    android:text="@string/category_Text_View"
                     android:gravity="center"
                     android:layout_gravity="center|end"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/categoryEditText"
+                <Spinner
+                    android:id="@+id/categorySpinner"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
                     android:textSize="20sp"
+                    android:layout_gravity="center"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/newCategoryFloatingButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:backgroundTint="@color/lowWeight"
                     android:layout_gravity="center"
-                    android:hint="Category"/>
+                    android:src="@drawable/plus_svg"/>
             </LinearLayout>
 
             <TextView
@@ -129,6 +136,6 @@
         android:textSize="25sp"
         android:gravity="center"
         android:layout_gravity="center"
-        android:text="Save"/>
+        android:text="@string/save_new_task"/>
 
 </LinearLayout>

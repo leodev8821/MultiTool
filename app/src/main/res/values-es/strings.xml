@@ -69,4 +69,13 @@
     <string name="empty_superheroes_title">Ningún superhéroe para mostrar</string>
     <string name="empty_superheroes_advice">Presione la lupa para buscar un superhéroe</string>
     <string name="todoAppButton">ToDo App</string>
+    <string name="new_task">Nueva Tarea</string>
+    <string name="new_task_Text_View">Nueva Tarea:</string>
+    <string name="new_task_name">Nuevo nombre de tarea</string>
+    <string name="category_Text_View">Categoría:</string>
+    <string name="category_EditText_View">Categoría</string>
+    <string name="save_new_task">Guardar</string>
+    <string name="done_column_TextView">Hecho?:</string>
+    <string name="category_date_column_TextView">Categoría/Fecha</string>
+    <string name="task_column_TextView">Tarea</string>
 </resources>

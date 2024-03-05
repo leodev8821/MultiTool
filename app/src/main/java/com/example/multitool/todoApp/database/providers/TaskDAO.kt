@@ -20,14 +20,14 @@ class TaskDAO(context: Context){
 
         // Create a new map of values, where column names are the keys
         val values = ContentValues().apply {
-            put(TasksModel.COLUMN_DATE, task.date)
-            put(TasksModel.COLUMN_TASK, task.task)
-            put(TasksModel.COLUMN_CATEGORY, task.category)
-            put(TasksModel.COLUMN_DONE, task.done)
+            put(TasksModel.TaskTable.COLUMN_DATE, task.date)
+            put(TasksModel.TaskTable.COLUMN_TASK, task.task)
+            put(TasksModel.TaskTable.COLUMN_TASK_CATEGORY, task.category)
+            put(TasksModel.TaskTable.COLUMN_DONE, task.done)
         }
 
         // Insert the new row, returning the primary key value of the new row
-        val newRowId = db.insert(TasksModel.TABLE_NAME, null, values)
+        val newRowId = db.insert(TasksModel.TaskTable.TABLE_NAME, null, values)
         Log.i("DATABASE", "New record id: $newRowId")
 
         db.close()
@@ -43,11 +43,11 @@ class TaskDAO(context: Context){
         val db = databaseManager.writableDatabase
 
         val values = ContentValues().apply {
-            put(TasksModel.COLUMN_DONE, false)
+            put(TasksModel.TaskTable.COLUMN_DONE, task.done)
         }
 
-        val updatedRows = db.update(TasksModel.TABLE_NAME, values, "${TasksModel.COLUMN_NAME_ID} = ${task.id}", null)
-        Log.i("DATABASE", "Updated record id: $updatedRows")
+        val updatedRows = db.update(TasksModel.TaskTable.TABLE_NAME, values, "${TasksModel.TaskTable.COLUMN_NAME_ID} = ${task.id}", null)
+        Log.i("DATABASE", "Updated $updatedRows record, with id: ${task.id} with Done state: ${task.done}")
 
         db.close()
 
@@ -56,7 +56,7 @@ class TaskDAO(context: Context){
     fun delete(task: Task){
         val db = databaseManager.writableDatabase
 
-        val deleteRows = db.delete(TasksModel.TABLE_NAME, "${TasksModel.COLUMN_NAME_ID} = ${task.id}", null)
+        val deleteRows = db.delete(TasksModel.TaskTable.TABLE_NAME, "${TasksModel.TaskTable.COLUMN_NAME_ID} = ${task.id}", null)
         Log.i("DATABASE", "Deleted rows: $deleteRows")
 
         db.close()
@@ -69,9 +69,9 @@ class TaskDAO(context: Context){
         val db = databaseManager.writableDatabase
 
         val cursor = db.query(
-            TasksModel.COLUMN_TASK,                                         // The Table to query
-            TasksModel.COLUMN_NAMES,                                        // The array of columns to return (pass null to get all)
-            "${TasksModel.COLUMN_NAME_ID} = $id",       // The columns for the WHERE clause
+            TasksModel.TaskTable.TABLE_NAME,                         // The Table to query
+            TasksModel.TaskTable.COLUMN_NAMES,                        // The array of columns to return (pass null to get all)
+            "${TasksModel.TaskTable.COLUMN_NAME_ID} = $id",   // The columns for the WHERE clause
             null,                                      // The values for the WHERE clause
             null,                                          // don't group the rows
             null,                                           // don't filter by row groups
@@ -81,11 +81,11 @@ class TaskDAO(context: Context){
         var task: Task? = null
 
         if (cursor.moveToNext()){
-            val id = cursor.getInt(cursor.getColumnIndex(TasksModel.COLUMN_NAME_ID))
-            val date = cursor.getString(cursor.getColumnIndex(TasksModel.COLUMN_DATE)).toLong()
-            val taskName = cursor.getString(cursor.getColumnIndex(TasksModel.COLUMN_TASK))
-            val category = cursor.getString(cursor.getColumnIndex(TasksModel.COLUMN_CATEGORY))
-            val done = cursor.getInt(cursor.getColumnIndex(TasksModel.COLUMN_DONE)) == 1
+            val id = cursor.getInt(cursor.getColumnIndex(TasksModel.TaskTable.COLUMN_NAME_ID))
+            val date = cursor.getString(cursor.getColumnIndex(TasksModel.TaskTable.COLUMN_DATE)).toLong()
+            val taskName = cursor.getString(cursor.getColumnIndex(TasksModel.TaskTable.COLUMN_TASK))
+            val category = cursor.getString(cursor.getColumnIndex(TasksModel.TaskTable.COLUMN_TASK_CATEGORY))
+            val done = cursor.getInt(cursor.getColumnIndex(TasksModel.TaskTable.COLUMN_DONE)) == 1
 
             // Every task is added to a list
             task = Task(id, date, taskName, category, done)
@@ -103,23 +103,23 @@ class TaskDAO(context: Context){
         val db = databaseManager.writableDatabase
 
         val cursor = db.query(
-            TasksModel.TABLE_NAME,                                         // The Table to query
-            TasksModel.COLUMN_NAMES,                                        // The array of columns to return (pass null to get all)
+            TasksModel.TaskTable.TABLE_NAME,                       // The Table to query
+            TasksModel.TaskTable.COLUMN_NAMES,                     // The array of columns to return (pass null to get all)
             null,                                         // The columns for the WHERE clause
             null,                                      // The values for the WHERE clause
             null,                                          // don't group the rows
             null,                                           // don't filter by row groups
-            TasksModel.SORT_ORDER                                  // The sort order
+            TasksModel.TaskTable.SORT_ORDER                        // The sort order
         )
 
         val list:MutableList<Task> = mutableListOf()
 
         while (cursor.moveToNext()){
-            val id = cursor.getInt(cursor.getColumnIndex(TasksModel.COLUMN_NAME_ID))
-            val date = cursor.getString(cursor.getColumnIndex(TasksModel.COLUMN_DATE)).toLong()
-            val taskName = cursor.getString(cursor.getColumnIndex(TasksModel.COLUMN_TASK))
-            val category = cursor.getString(cursor.getColumnIndex(TasksModel.COLUMN_CATEGORY))
-            val done = cursor.getInt(cursor.getColumnIndex(TasksModel.COLUMN_DONE)) == 1
+            val id = cursor.getInt(cursor.getColumnIndex(TasksModel.TaskTable.COLUMN_NAME_ID))
+            val date = cursor.getString(cursor.getColumnIndex(TasksModel.TaskTable.COLUMN_DATE)).toLong()
+            val taskName = cursor.getString(cursor.getColumnIndex(TasksModel.TaskTable.COLUMN_TASK))
+            val category = cursor.getString(cursor.getColumnIndex(TasksModel.TaskTable.COLUMN_TASK_CATEGORY))
+            val done = cursor.getInt(cursor.getColumnIndex(TasksModel.TaskTable.COLUMN_DONE)) == 1
 
             // Every task is added to a list
             val task = Task(id, date, taskName, category, done)

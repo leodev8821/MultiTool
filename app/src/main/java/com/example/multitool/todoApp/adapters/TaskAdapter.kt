@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.multitool.databinding.ItemTodoappBinding
+import com.example.multitool.todoApp.database.Category
 import com.example.multitool.todoApp.database.Task
 import com.example.multitool.todoApp.database.providers.TaskDAO
 
@@ -14,10 +15,10 @@ class TaskAdapter(
     val onClickListener: (position:Int) -> Unit,
     val onCheckBoxListener: (position:Int) -> Unit) : RecyclerView.Adapter<TaskViewHolder>() {
 
-        public fun updateData(items:List<Task>) {
-            this.items = items
-            notifyDataSetChanged()
-        }
+    fun updateData(items:List<Task>) {
+        this.items = items
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val binding = ItemTodoappBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -39,9 +40,10 @@ class TaskAdapter(
 class TaskViewHolder(val binding:ItemTodoappBinding) : RecyclerView.ViewHolder(binding.root){
 
     fun render(task: Task){
+        val category:List<Category> = listOf()
         val dateFormat = DateFormat.format("dd-MMMM-yyyy", task.date)
         binding.itemTaskTextView.text = task.task
-        binding.itemCategoryTextView.text = task.category
+        binding.itemCategoryTextView.text = category.toString()
         binding.itemDateTextView.text = dateFormat
         binding.itemDoneCheckBox.isChecked = task.done
     }

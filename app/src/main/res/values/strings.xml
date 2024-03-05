@@ -100,6 +100,17 @@
 
     <!-- To Do App -->
     <string name="todoAppButton">ToDo App</string>
+    <string name="new_task">New Task</string>
+    <string name="new_task_Text_View">New Task:</string>
+    <string name="new_task_name">New Task Name</string>
+    <string name="category_Text_View">Category:</string>
+    <string name="category_EditText_View">Category</string>
+    <string name="save_new_task">Save</string>
+    <string name="todo_list_title" translatable="false">ToDo List</string>
+    <string name="done_column_TextView">Done?:</string>
+    <string name="category_date_column_TextView">Category/Date</string>
+    <string name="task_column_TextView">Task</string>
+    <string name="add_new_category_EditText">Add new category</string>
 
 
 </resources>
