@@ -35,8 +35,8 @@ class TasksModel {
                     "$COLUMN_DATE INTEGER, " +
                     "$COLUMN_TASK TEXT, " +
                     "$COLUMN_TASK_CATEGORY INTEGER, " +
-                    "FOREIGN KEY ($COLUMN_TASK_CATEGORY) REFERENCES ${CategoryTable.TABLE_NAME} ($TABLE_CATEGORY), " +
-                    "$COLUMN_DONE BOOLEAN);"
+                    "$COLUMN_DONE BOOLEAN, " +
+                    "FOREIGN KEY ($COLUMN_TASK_CATEGORY) REFERENCES ${CategoryTable.TABLE_NAME} ($TABLE_CATEGORY));"
 
         const val SQL_DELETE_TABLE_TASK = "DROP TABLE IF EXISTS $TABLE_NAME"
     }

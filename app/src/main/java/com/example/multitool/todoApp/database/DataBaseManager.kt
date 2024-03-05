@@ -8,8 +8,8 @@ class DataBaseManager (context: Context):
     SQLiteOpenHelper(context, TasksModel.DATABASE_NAME, null, TasksModel.DATABASE_VERSION){
 
     override fun onCreate(db: SQLiteDatabase) {
+        db.execSQL(TasksModel.CategoryTable.SQL_CREATE_TABLE_CATEGORY)
         db.execSQL(TasksModel.TaskTable.SQL_CREATE_TABLE_TASK)
-        db.execSQL((TasksModel.CategoryTable.SQL_CREATE_TABLE_CATEGORY))
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
