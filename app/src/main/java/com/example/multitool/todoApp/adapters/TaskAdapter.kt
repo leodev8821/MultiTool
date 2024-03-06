@@ -5,7 +5,9 @@ import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.multitool.databinding.ItemCategoryBinding
 import com.example.multitool.databinding.ItemTodoappBinding
+import com.example.multitool.todoApp.activities.NewTaskActivity
 import com.example.multitool.todoApp.database.Category
 import com.example.multitool.todoApp.database.Task
 import com.example.multitool.todoApp.database.providers.TaskDAO
@@ -22,6 +24,7 @@ class TaskAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val binding = ItemTodoappBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
         return TaskViewHolder(binding)
     }
 
@@ -30,8 +33,10 @@ class TaskAdapter(
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         holder.render(items[position])
         holder.itemView.setOnClickListener{ onClickListener(position)}
-        holder.binding.itemDoneCheckBox.setOnCheckedChangeListener{ which, isChecked ->
-            onCheckBoxListener(position)
+        holder.binding.itemDoneCheckBox.setOnCheckedChangeListener{ checkbox, isChecked ->
+            if (checkbox.isPressed){
+                onCheckBoxListener(position)
+            }
         }
     }
 
@@ -40,10 +45,9 @@ class TaskAdapter(
 class TaskViewHolder(val binding:ItemTodoappBinding) : RecyclerView.ViewHolder(binding.root){
 
     fun render(task: Task){
-        val category:List<Category> = listOf()
         val dateFormat = DateFormat.format("dd-MMMM-yyyy", task.date)
         binding.itemTaskTextView.text = task.task
-        binding.itemCategoryTextView.text = category.toString()
+        binding.itemCategoryTextView.text = task.category
         binding.itemDateTextView.text = dateFormat
         binding.itemDoneCheckBox.isChecked = task.done
     }

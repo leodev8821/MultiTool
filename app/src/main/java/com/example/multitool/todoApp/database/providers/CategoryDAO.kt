@@ -59,14 +59,14 @@ class CategoryDAO (context:Context) {
     }
 
     @SuppressLint("Range")
-    fun find(id:Int): Category? {
+    fun find(category:String): Category? {
 
         val db = databaseManager.writableDatabase
 
         val cursor = db.query(
             TasksModel.CategoryTable.TABLE_NAME,                         // The Table to query
             TasksModel.CategoryTable.COLUMN_NAMES,                        // The array of columns to return (pass null to get all)
-            "${TasksModel.CategoryTable.COLUMN_NAME_ID} = $id",   // The columns for the WHERE clause
+            "${TasksModel.CategoryTable.COLUMN_CATEGORY} = $category",   // The columns for the WHERE clause
             null,                                      // The values for the WHERE clause
             null,                                          // don't group the rows
             null,                                           // don't filter by row groups

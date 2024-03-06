@@ -2,29 +2,42 @@ package com.example.multitool.todoApp.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.format.DateFormat
+import android.util.Log
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.multitool.databinding.ActivityNewTaskBinding
-import com.example.multitool.todoApp.database.Task
-import com.example.multitool.todoApp.database.providers.TaskDAO
-import android.text.format.DateFormat
-import android.widget.EditText
-import androidx.appcompat.app.AlertDialog
 import com.example.multitool.databinding.NewcategoryEdittextBinding
+import com.example.multitool.todoApp.adapters.CategoryAdapter
 import com.example.multitool.todoApp.database.Category
+import com.example.multitool.todoApp.database.Task
 import com.example.multitool.todoApp.database.providers.CategoryDAO
+import com.example.multitool.todoApp.database.providers.TaskDAO
 import java.util.Calendar
 
-class NewTaskActivity : AppCompatActivity() {
+
+class NewTaskActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
 
     private lateinit var binding:ActivityNewTaskBinding
+
     private lateinit var bindingEditText: NewcategoryEdittextBinding
+    private lateinit var categoryList:List<Category>
+    private lateinit var categoryAdapter: CategoryAdapter
+
+    private lateinit var categoryDAO:CategoryDAO
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityNewTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        categoryDAO = CategoryDAO(this)
 
         initView()
     }
@@ -38,9 +51,13 @@ class NewTaskActivity : AppCompatActivity() {
         // To set the current date
         setCurrentDate()
 
+        binding.categorySpinner.setOnItemSelectedListener(this)
+
+        loadSpinnerData()
+
         binding.saveNewTaskButton.setOnClickListener{
             val task:String = binding.newTaskEditText.text.toString()
-            val category:String = binding.categorySpinner.toString()
+            val category:String = binding.categorySpinner.getSelectedItem().toString()
             val done:Boolean = binding.doneCheckBox.isChecked
 
             newTask(task,category,done)
@@ -60,14 +77,17 @@ class NewTaskActivity : AppCompatActivity() {
     }
 
     private fun alertNewCategory(){
-        val newCategoryView:EditText = bindingEditText.newCategoryEditText
-        val newCategoryText:String = bindingEditText.newCategoryEditText.text.toString()
+        bindingEditText = NewcategoryEdittextBinding.inflate(layoutInflater)
 
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         builder
             .setTitle("Add new category")
-            .setView(newCategoryView)
-            .setPositiveButton("OK") { _, _ -> newCategory(newCategoryText)}
+            .setView(bindingEditText.root)
+            .setPositiveButton("OK") { _, _ ->
+                val newCategoryText:String = bindingEditText.newCategoryEditText.text.toString()
+                newCategory(newCategoryText)
+                refreshData()
+            }
             .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss()}
 
         builder.show()
@@ -78,10 +98,17 @@ class NewTaskActivity : AppCompatActivity() {
             val newCategory = Category(-1, category)
             val categoryDAO = CategoryDAO(this)
             categoryDAO.insert(newCategory)
+            loadSpinnerData()
+            Toast.makeText(this, "New Category was created!", Toast.LENGTH_LONG).show()
         }
         else{
             Toast.makeText(this, "Please, add a category name", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun refreshData() {
+        categoryList = categoryDAO.findAll()
+        categoryAdapter.updateData(categoryList)
     }
 
     /*
@@ -97,6 +124,34 @@ class NewTaskActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun loadSpinnerData(){
+        categoryList = categoryDAO.findAll()
+
+        // Creating adapter for spinner
+        val dataAdapter:ArrayAdapter<String> = ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, categoryList.map { it.category })
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // attaching data adapter to spinner
+        binding.categorySpinner.setAdapter(dataAdapter)
+
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+        // On selecting a spinner item
+        val category = parent.getItemAtPosition(position).toString()
+        Log.i("Spinner position: ", position.toString())
+
+        // Showing selected spinner item
+        Toast.makeText(parent.context, "You selected: $category", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("Not yet implemented")
+    }
+
 
     private fun initActionBar() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -121,7 +176,6 @@ class NewTaskActivity : AppCompatActivity() {
      */
     private fun clearForm(){
         binding.newTaskEditText.text?.clear()
-        //binding.categoryEditText.text?.clear()
         binding.doneCheckBox.isChecked= false
     }
 
