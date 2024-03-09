@@ -62,30 +62,33 @@ class CategoryDAO (context:Context) {
     fun find(category:String): Category? {
 
         val db = databaseManager.writableDatabase
-
         val cursor = db.query(
             TasksModel.CategoryTable.TABLE_NAME,                         // The Table to query
             TasksModel.CategoryTable.COLUMN_NAMES,                        // The array of columns to return (pass null to get all)
-            "${TasksModel.CategoryTable.COLUMN_CATEGORY} = $category",   // The columns for the WHERE clause
+            "${TasksModel.CategoryTable.COLUMN_CATEGORY} = '$category'",   // The columns for the WHERE clause
             null,                                      // The values for the WHERE clause
             null,                                          // don't group the rows
             null,                                           // don't filter by row groups
             null                                           // The sort order
         )
 
-        var category: Category? = null
+        var categoryElement: Category? = null
 
-        if (cursor.moveToNext()){
-            val idCategory = cursor.getInt(cursor.getColumnIndex(TasksModel.CategoryTable.COLUMN_NAME_ID))
-            val categoryName = cursor.getString(cursor.getColumnIndex(TasksModel.CategoryTable.COLUMN_CATEGORY))
+        if(cursor != null){
+            if (cursor.moveToNext()){
+                val idCategory = cursor.getInt(cursor.getColumnIndex(TasksModel.CategoryTable.COLUMN_NAME_ID))
+                val categoryName = cursor.getString(cursor.getColumnIndex(TasksModel.CategoryTable.COLUMN_CATEGORY))
 
-            // Every task is added to a list
-            category = Category(idCategory, categoryName)
+                // The found element is added to CategoryElement
+                categoryElement = Category(idCategory, categoryName)
+            }
+            cursor.close()
+            db.close()
+        }else{
+            Log.i("Cursor Error","Error de cursor")
         }
-        cursor.close()
-        db.close()
 
-        return category
+        return categoryElement
 
     }
 

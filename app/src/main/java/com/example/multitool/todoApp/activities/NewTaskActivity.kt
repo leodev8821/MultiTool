@@ -78,6 +78,7 @@ class NewTaskActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
 
     private fun alertNewCategory(){
         bindingEditText = NewcategoryEdittextBinding.inflate(layoutInflater)
+        categoryAdapter = CategoryAdapter(categoryList)
 
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         builder

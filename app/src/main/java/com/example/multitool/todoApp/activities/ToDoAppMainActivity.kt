@@ -58,11 +58,9 @@ class ToDoAppMainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
             val intent: Intent = Intent(this, NewTaskActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 
-    fun modifyTaskDone(position: Int){
+    private fun modifyTaskDone(position: Int){
         val task:Task = taskList[position]
         task.done = !task.done
         taskDAO.update(task)
@@ -122,9 +120,7 @@ class ToDoAppMainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
         }
 
         // Drop down layout style - list view with radio button
-        if (dataAdapter != null) {
-            dataAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-        }
+        dataAdapter?.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
 
         // attaching data adapter to spinner
         val binding:EdittaskDialogBinding = EdittaskDialogBinding.inflate(layoutInflater)

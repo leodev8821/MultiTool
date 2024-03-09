@@ -13,7 +13,7 @@ class TasksModel {
 
     object TaskTable{
         const val COLUMN_NAME_ID = "_id"
-        const val TABLE_NAME = "Task"
+        const val TABLE_NAME = "TaskTable"
         const val COLUMN_DATE = "Date"
         const val COLUMN_TASK = "Task"
         const val COLUMN_TASK_CATEGORY = "TaskCategory"
@@ -42,7 +42,7 @@ class TasksModel {
     }
 
     object CategoryTable{
-        const val TABLE_NAME = "Category"
+        const val TABLE_NAME = "CategoryTable"
         const val COLUMN_NAME_ID = "_id"
         const val COLUMN_CATEGORY = "Category"
         val COLUMN_NAMES = arrayOf(
