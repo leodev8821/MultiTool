@@ -16,6 +16,9 @@
         android:theme="@style/Theme.MultiTool"
         tools:targetApi="31">
         <activity
+            android:name=".todoApp.activities.EditCategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".todoApp.activities.NewTaskActivity"
             android:exported="false" />
         <activity

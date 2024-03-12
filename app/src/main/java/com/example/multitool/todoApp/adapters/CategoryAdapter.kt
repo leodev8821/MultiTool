@@ -6,7 +6,8 @@ import com.example.multitool.databinding.ItemCategoryBinding
 import com.example.multitool.todoApp.database.Category
 
 class CategoryAdapter(
-    private var items:List<Category> = listOf()) : RecyclerView.Adapter<CategoryViewHolder>() {
+    private var items:List<Category> = listOf(),
+    val onEditButtonClick: (position:Int) -> Unit,) : RecyclerView.Adapter<CategoryViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val binding = ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CategoryViewHolder(binding)
@@ -16,6 +17,7 @@ class CategoryAdapter(
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         holder.render(items[position])
+        holder.itemView.setOnClickListener { onEditButtonClick(position) }
     }
 
     fun updateData(items:List<Category>) {
@@ -28,5 +30,7 @@ class CategoryViewHolder(val binding: ItemCategoryBinding) : RecyclerView.ViewHo
 
     fun render(category: Category){
         binding.categoryTextView.text = category.category
+        binding.editFoatingActionButton
+        binding.eraseFoatingActionButton
     }
 }

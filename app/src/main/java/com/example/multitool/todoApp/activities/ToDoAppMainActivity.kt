@@ -60,6 +60,22 @@ class ToDoAppMainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
         }
     }
 
+    private fun showAlert(title:String, done:String, category:String, position:Int){
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder
+            .setTitle(title)
+            .setMessage(
+                "Category: $category "+
+                        "\nDone?: $done "
+            )
+            .setPositiveButton("Delete") { _, _ -> deleteTask(position)}
+            .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss()}
+            .setNeutralButton("Edit") {_, _ -> editTask(position)}
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
     private fun modifyTaskDone(position: Int){
         val task:Task = taskList[position]
         task.done = !task.done
@@ -166,22 +182,6 @@ class ToDoAppMainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
             "No"
         }
         showAlert(task.task, done, task.category, position)
-    }
-
-    private fun showAlert(title:String, done:String, category:String, position:Int){
-        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-        builder
-            .setTitle(title)
-            .setMessage(
-                "Category: $category "+
-                "\nDone?: $done "
-            )
-            .setPositiveButton("Delete") { _, _ -> deleteTask(position)}
-            .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss()}
-            .setNeutralButton("Edit") {_, _ -> editTask(position)}
-
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
     }
 
     private fun onCheckBoxListener(position: Int) {

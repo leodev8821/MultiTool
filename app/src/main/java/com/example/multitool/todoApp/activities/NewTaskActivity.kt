@@ -37,13 +37,13 @@ class NewTaskActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
         binding = ActivityNewTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        categoryDAO = CategoryDAO(this)
-
         initView()
     }
 
     private fun initView() {
         initActionBar()
+
+        categoryDAO = CategoryDAO(this)
 
         // To start the activity with unchecked Done
         defaultCheckBox()
@@ -78,11 +78,13 @@ class NewTaskActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
 
     private fun alertNewCategory(){
         bindingEditText = NewcategoryEdittextBinding.inflate(layoutInflater)
-        categoryAdapter = CategoryAdapter(categoryList)
+        categoryAdapter = CategoryAdapter(categoryList, {
+            onItemClickListener(it)
+        })
 
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         builder
-            .setTitle("Add new category")
+            .setTitle("Add or edit category:")
             .setView(bindingEditText.root)
             .setPositiveButton("OK") { _, _ ->
                 val newCategoryText:String = bindingEditText.newCategoryEditText.text.toString()
@@ -90,8 +92,20 @@ class NewTaskActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
                 refreshData()
             }
             .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss()}
+            .setNeutralButton("Edit") {_, _ -> editCategory()}
 
         builder.show()
+    }
+
+    private fun onItemClickListener(position: Int) {
+        //ToDo
+
+    }
+
+    private fun editCategory() {
+        val intent: Intent = Intent(this, EditCategoryActivity::class.java)
+        startActivity(intent)
+
     }
 
     private fun newCategory(category:String?){

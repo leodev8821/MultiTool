@@ -7,6 +7,11 @@ import android.database.sqlite.SQLiteOpenHelper
 class DataBaseManager (context: Context):
     SQLiteOpenHelper(context, TasksModel.DATABASE_NAME, null, TasksModel.DATABASE_VERSION){
 
+    override fun onOpen(db: SQLiteDatabase?) {
+        super.onOpen(db)
+        db?.execSQL("PRAGMA foreign_keys = ON;")
+    }
+
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(TasksModel.CategoryTable.SQL_CREATE_TABLE_CATEGORY)
         db.execSQL(TasksModel.TaskTable.SQL_CREATE_TABLE_TASK)
