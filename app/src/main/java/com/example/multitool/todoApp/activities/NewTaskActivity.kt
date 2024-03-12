@@ -146,7 +146,7 @@ class NewTaskActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
         Log.i("Spinner position: ", position.toString())
 
         // Showing selected spinner item
-        Toast.makeText(parent.context, "You selected: $category", Toast.LENGTH_LONG).show()
+        Toast.makeText(parent.context, "You selected: $category", Toast.LENGTH_SHORT).show()
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -162,9 +162,9 @@ class NewTaskActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                intent = Intent(this, ToDoAppMainActivity::class.java)
+                //intent = Intent(this, ToDoAppMainActivity::class.java)
                 finish()
-                startActivity(intent)
+                //startActivity(intent)
                 return true
             }
         }
@@ -186,7 +186,7 @@ class NewTaskActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
     private fun setCurrentDate() {
         val calendar = getCurrentDate()
         val dateFormat = DateFormat.format("dd-MMMM-yyyy", calendar)
-        binding.dateTextView.text = dateFormat
+        binding.dateTextView.append(dateFormat)
     }
 
     private fun getCurrentDate():Long{

@@ -27,7 +27,7 @@ class TasksModel {
             COLUMN_DONE
         )
 
-        val SORT_ORDER = "$COLUMN_NAME_ID DESC"
+        val SORT_ORDER = "$COLUMN_TASK_CATEGORY ASC"
 
         const val SQL_CREATE_TABLE_TASK =
             "CREATE TABLE $TABLE_NAME (" +

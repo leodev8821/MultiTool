@@ -75,18 +75,19 @@ class ToDoAppMainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
 
     private fun editTask(position: Int){
         val task:Task = taskList[position]
-        loadSpinnerDataDialog(task.category)
 
         val builder:AlertDialog.Builder = AlertDialog.Builder(this)
         val binding:EdittaskDialogBinding = EdittaskDialogBinding.inflate(layoutInflater)
         builder.setView(binding.root)
 
+        loadSpinnerDataDialog(binding)
+
         //Set taskEditTextDialog with the actual name of Task
         binding.taskTextFieldDialog.editText?.setText(task.task)
-        binding.categorySpinnerDialog.setSelection(position)
-        builder.setTitle("Edit Task ${task.task}")
+        binding.categorySpinnerDialog.setSelection(0)
+        builder.setTitle("Edit Task:  ${task.task}")
 
-        builder.setNegativeButton(android.R.string.cancel) { dialog, _ ->
+        builder.setNegativeButton(R.string.cancel) { dialog, _ ->
             dialog.dismiss()
         }
         builder.setPositiveButton("Save", null)
@@ -97,8 +98,10 @@ class ToDoAppMainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
         // Need to move listener after show dialog to prevent dismiss
         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
             val taskName = binding.taskTextFieldDialog.editText?.text.toString()
-            if (taskName.isNotEmpty()) {
+            val taskCategory = binding.categorySpinnerDialog.selectedItem.toString()
+            if (taskName.isNotEmpty() && taskCategory.isNotEmpty()) {
                 task.task = taskName
+                task.category = taskCategory
                 taskDAO.update(task)
                 taskAdapter.notifyItemChanged(position)
                 Toast.makeText(this, "Successful edited task!", Toast.LENGTH_SHORT).show()
@@ -110,22 +113,17 @@ class ToDoAppMainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
 
     }
 
-    private fun loadSpinnerDataDialog(category:String){
-        val categoryElement:Category? = categoryDAO.find(category)
+    private fun loadSpinnerDataDialog(binding:EdittaskDialogBinding){
+        val categoryList:List<Category> = categoryDAO.findAll()
 
         // Creating adapter for spinner
-        val dataAdapter: ArrayAdapter<String>? = categoryElement?.let {
-            ArrayAdapter<String>(this,
-                R.layout.simple_spinner_item, it.id)
-        }
+        val dataAdapter:ArrayAdapter<String> = ArrayAdapter<String>(this,R.layout.simple_spinner_item, categoryList.map { it.category })
 
         // Drop down layout style - list view with radio button
-        dataAdapter?.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
+        dataAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
 
         // attaching data adapter to spinner
-        val binding:EdittaskDialogBinding = EdittaskDialogBinding.inflate(layoutInflater)
         binding.categorySpinnerDialog.setAdapter(dataAdapter)
-
     }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
@@ -134,7 +132,7 @@ class ToDoAppMainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
         Log.i("Spinner position: ", position.toString())
 
         // Showing selected spinner item
-        Toast.makeText(parent.context, "You selected: $category", Toast.LENGTH_LONG).show()
+        Toast.makeText(parent.context, "You selected: $category", Toast.LENGTH_SHORT).show()
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

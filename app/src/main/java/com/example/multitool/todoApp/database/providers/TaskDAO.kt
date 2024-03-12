@@ -43,11 +43,13 @@ class TaskDAO(context: Context){
         val db = databaseManager.writableDatabase
 
         val values = ContentValues().apply {
+            put(TasksModel.TaskTable.COLUMN_TASK, task.task)
+            put(TasksModel.TaskTable.COLUMN_TASK_CATEGORY, task.category)
             put(TasksModel.TaskTable.COLUMN_DONE, task.done)
         }
 
         val updatedRows = db.update(TasksModel.TaskTable.TABLE_NAME, values, "${TasksModel.TaskTable.COLUMN_NAME_ID} = ${task.id}", null)
-        Log.i("DATABASE", "Updated $updatedRows record, with id: ${task.id} with Done state: ${task.done}")
+        Log.i("DATABASE", "Updated $updatedRows record, with id: ${task.id} with Done state: ${task.done}, TaskName: ${task.task} and Category: ${task.category}")
 
         db.close()
 
