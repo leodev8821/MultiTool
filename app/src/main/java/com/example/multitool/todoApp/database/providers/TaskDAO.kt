@@ -22,7 +22,7 @@ class TaskDAO(context: Context){
         val values = ContentValues().apply {
             put(TasksModel.TaskTable.COLUMN_DATE, task.date)
             put(TasksModel.TaskTable.COLUMN_TASK, task.task)
-            put(TasksModel.TaskTable.COLUMN_TASK_CATEGORY, task.category)
+            put(TasksModel.TaskTable.COLUMN_TASK_CATEGORY, task.category) //cambiar a int este campo
             put(TasksModel.TaskTable.COLUMN_DONE, task.done)
         }
 

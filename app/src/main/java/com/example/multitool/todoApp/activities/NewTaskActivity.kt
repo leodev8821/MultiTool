@@ -40,6 +40,12 @@ class NewTaskActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
         initView()
     }
 
+    override fun onResume() {
+        super.onResume()
+
+
+    }
+
     private fun initView() {
         initActionBar()
 
@@ -78,8 +84,10 @@ class NewTaskActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
 
     private fun alertNewCategory(){
         bindingEditText = NewcategoryEdittextBinding.inflate(layoutInflater)
-        categoryAdapter = CategoryAdapter(categoryList, {
-            onItemClickListener(it)
+        categoryAdapter = CategoryAdapter(categoryList,{
+            onEditButtonClick(it)
+        }, {
+            onEraseButtonClick(it)
         })
 
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
@@ -97,9 +105,12 @@ class NewTaskActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
         builder.show()
     }
 
-    private fun onItemClickListener(position: Int) {
+    private fun onEditButtonClick(position: Int) {
         //ToDo
+    }
 
+    private fun onEraseButtonClick(position: Int) {
+        //ToDo
     }
 
     private fun editCategory() {

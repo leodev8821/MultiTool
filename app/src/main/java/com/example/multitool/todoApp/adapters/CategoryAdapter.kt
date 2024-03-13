@@ -7,7 +7,8 @@ import com.example.multitool.todoApp.database.Category
 
 class CategoryAdapter(
     private var items:List<Category> = listOf(),
-    val onEditButtonClick: (position:Int) -> Unit,) : RecyclerView.Adapter<CategoryViewHolder>() {
+    val onEditButtonClick: (position:Int) -> Unit,
+    val onEraseButtonClick: (position:Int) -> Unit,) : RecyclerView.Adapter<CategoryViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val binding = ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CategoryViewHolder(binding)
@@ -17,7 +18,8 @@ class CategoryAdapter(
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         holder.render(items[position])
-        holder.itemView.setOnClickListener { onEditButtonClick(position) }
+        holder.binding.editFoatingActionButton.setOnClickListener { onEditButtonClick(position) }
+        holder.binding.eraseFoatingActionButton.setOnClickListener { onEraseButtonClick(position) }
     }
 
     fun updateData(items:List<Category>) {

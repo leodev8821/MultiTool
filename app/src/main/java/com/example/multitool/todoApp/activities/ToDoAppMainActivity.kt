@@ -60,6 +60,34 @@ class ToDoAppMainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
         }
     }
 
+    private fun loadData() {
+        taskList = taskDAO.findAll()
+        categoryList = categoryDAO.findAll()
+
+        taskAdapter = TaskAdapter(taskList,{
+            onItemClickListener(it)
+        }, {
+            onCheckBoxListener(it)
+        })
+        val recycler:RecyclerView = binding.todolistRecyclerView
+        recycler.layoutManager = LinearLayoutManager(this)
+        recycler.adapter = taskAdapter
+    }
+
+    private fun onItemClickListener(position: Int) {
+        val task:Task = taskList[position]
+        val done:String = if(task.done){
+            "Yes"
+        }else{
+            "No"
+        }
+        showAlert(task.task, done, task.category, position)
+    }
+
+    private fun onCheckBoxListener(position: Int) {
+        modifyTaskDone(position)
+    }
+
     private fun showAlert(title:String, done:String, category:String, position:Int){
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         builder
@@ -158,34 +186,6 @@ class ToDoAppMainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
     private fun refreshData() {
         taskList = taskDAO.findAll()
         taskAdapter.updateData(taskList)
-    }
-
-    private fun loadData() {
-        taskList = taskDAO.findAll()
-        categoryList = categoryDAO.findAll()
-
-        taskAdapter = TaskAdapter(taskList,{
-            onItemClickListener(it)
-        }, {
-            onCheckBoxListener(it)
-        })
-        val recycler:RecyclerView = binding.todolistRecyclerView
-        recycler.layoutManager = LinearLayoutManager(this)
-        recycler.adapter = taskAdapter
-    }
-
-    private fun onItemClickListener(position: Int) {
-        val task:Task = taskList[position]
-        val done:String = if(task.done){
-            "Yes"
-        }else{
-            "No"
-        }
-        showAlert(task.task, done, task.category, position)
-    }
-
-    private fun onCheckBoxListener(position: Int) {
-        modifyTaskDone(position)
     }
 
     // To listen the item selected in a menu
