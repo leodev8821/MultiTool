@@ -96,6 +96,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    @Deprecated("Deprecated in Java")
     @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
         //super.onBackPressed()
